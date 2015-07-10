@@ -1,5 +1,7 @@
 package de.marcweinberger.model;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -9,6 +11,7 @@ import java.time.LocalDateTime;
  * @author Marc Weinberger, marc.weinberger@me.com
  * @since 10.07.15
  */
+@Document
 public class Project {
 
 	private String id;
@@ -21,6 +24,9 @@ public class Project {
 	private LocalDate endDate;
 	private LocalDateTime createdAt;
 	private LocalDateTime updatedAt;
+
+	public Project() {
+	}
 
 	public LocalDateTime getCreatedAt() {
 		return createdAt;
