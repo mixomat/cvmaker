@@ -1,4 +1,8 @@
 cvmaker.iml
-.idea
-target
-data
+.idea/
+target/
+node_modules/
+bower_components/
+.sass-cache/
+.tmp/
+dist/
