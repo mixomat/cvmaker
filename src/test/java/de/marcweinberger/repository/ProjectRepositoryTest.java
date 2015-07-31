@@ -61,6 +61,6 @@ public class ProjectRepositoryTest {
 
     // then
     assertThat(projects, hasSize(1));
-    assertThat(projects, everyItem(hasProperty("id")));
+    assertThat(projects, hasItem(hasProperty("id")));
   }
 }
