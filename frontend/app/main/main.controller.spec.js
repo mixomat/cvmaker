@@ -6,10 +6,9 @@
     beforeEach(module('cvmaker'));
 
     it('should define more than 5 awesome things', inject(function ($controller) {
-      var vm = $controller('MainController');
+      var main = $controller('MainController');
 
-      expect(angular.isArray(vm.awesomeThings)).toBeTruthy();
-      expect(vm.awesomeThings.length > 5).toBeTruthy();
+      expect(main.creationDate).toBeCloseTo(1438285936992);
     }));
   });
 })();
