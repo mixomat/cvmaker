@@ -7,7 +7,6 @@
 
   /** @ngInject */
   function runBlock($log) {
-
     $log.debug('cvmaker started');
   }
 
