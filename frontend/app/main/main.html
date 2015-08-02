@@ -1,21 +1,20 @@
-<div layout="vertical" layout-fill>
+<div layout="column" layout-fill>
 
   <md-content>
     <header>
       <acme-navbar creationDate="main.creationDate"/>
     </header>
-    <md-card>
+    <md-card ng-repeat="project in main.projects._embedded.projects">
       <md-card-content>
-        <h2>Project Title</h2>
+        <h2>{{project.title}}</h2>
 
-        <p>Project Content</p>
+        <p>{{project.description}}</p>
       </md-card-content>
       <div class="md-actions" layout="row" layout-align="end start">
         <md-button>Edit</md-button>
         <md-button>Delete</md-button>
       </div>
     </md-card>
-
   </md-content>
 
 </div>
