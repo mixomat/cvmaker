@@ -3,30 +3,25 @@
 
   angular
     .module('cvmaker')
-    .directive('acmeNavbar', acmeNavbar);
+    .directive('cvNavbar', cvNavbar);
 
   /** @ngInject */
-  function acmeNavbar() {
+  function cvNavbar() {
     var directive = {
       restrict: 'E',
       templateUrl: 'app/components/navbar/navbar.html',
-      scope: {
-        creationDate: '='
+      scope: {},
+      bindToController: {
+        title: '@'
       },
-      controller: NavbarController,
-      controllerAs: 'vm',
-      bindToController: true
+      controller: function () {
+        var vm = this;
+        vm.pageTitle = vm.title;
+      },
+      controllerAs: 'vm'
     };
 
     return directive;
-
-    /** @ngInject */
-    function NavbarController(moment) {
-      var vm = this;
-
-      // "vm.creation" is avaible by directive option "bindToController: true"
-      vm.relativeDate = moment(vm.creationDate).fromNow();
-    }
   }
 
 })();

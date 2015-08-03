@@ -17,7 +17,7 @@
 
     it('should expose an all functoin', function () {
       expect(Project.all).toBeDefined();
-    })
+    });
   });
 
 
