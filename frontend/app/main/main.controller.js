@@ -6,25 +6,20 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($timeout, toastr, Project) {
+  function MainController($log, toastr, Project) {
     var vm = this;
 
-    vm.classAnimation = '';
     vm.creationDate = 1438285936992;
-    vm.showToastr = showToastr;
     vm.projects = Project.all();
-
-    activate();
-
-    function activate() {
-      $timeout(function () {
-        vm.classAnimation = 'rubberBand';
-      }, 4000);
-    }
+    vm.showToastr = showToastr;
+    vm.editProject = editProject;
 
     function showToastr() {
       toastr.info('Hello');
-      vm.classAnimation = '';
+    }
+
+    function editProject(project) {
+      $log.debug('editing project: ' + project);
     }
   }
 })();

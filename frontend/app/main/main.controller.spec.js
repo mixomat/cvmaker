@@ -15,8 +15,7 @@
         _embedded: {
           projects: [{id: 1}, {id: 2}]
         }
-      })
-      ;
+      });
     }));
 
     it('should define a creationDate', function () {
@@ -26,6 +25,10 @@
     it('should define projects', function () {
       expect(main.projects).toBeDefined();
     });
+
+    it('should define a editProject function', function () {
+      expect(main.editProject).toBeDefined();
+    })
 
   });
 })();
