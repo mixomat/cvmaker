@@ -1,3 +1,4 @@
+/* global _:false */
 (function () {
   'use strict';
 
@@ -11,11 +12,13 @@
       main = $controller('MainController');
       httpBackend = _$httpBackend_;
 
-      httpBackend.when('GET', '/reservations').respond({
+      httpBackend.when('GET', '/projects').respond({
         _embedded: {
           projects: [{id: 1}, {id: 2}]
         }
       });
+
+      httpBackend.flush();
     }));
 
     it('should define a creationDate', function () {
@@ -26,9 +29,13 @@
       expect(main.projects).toBeDefined();
     });
 
+    it('should define a project with id 1', function () {
+      expect(_.first(main.projects).id).toBeDefined();
+    });
+
     it('should define a editProject function', function () {
       expect(main.editProject).toBeDefined();
-    })
+    });
 
   });
 })();

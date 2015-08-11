@@ -6,13 +6,21 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($log, toastr, Project) {
+  function MainController($log, toastr, Project, _) {
     var vm = this;
 
     vm.creationDate = 1438285936992;
-    vm.projects = Project.all();
     vm.showToastr = showToastr;
     vm.editProject = editProject;
+
+    loadProjects();
+
+    function loadProjects() {
+      Project.all(function (data) {
+        vm.projects = _.get(data, '_embedded.projects', []);
+        $log.debug('loaded projects: ' + vm.projects);
+      });
+    }
 
     function showToastr() {
       toastr.info('Hello');

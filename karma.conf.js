@@ -14,6 +14,7 @@ function listFiles() {
 
   return wiredep(wiredepOptions).js
     .concat([
+      'bower_components/lodash/lodash.min.js',
       path.join(conf.paths.src, '/app/**/*.module.js'),
       path.join(conf.paths.src, '/app/**/*.js'),
       path.join(conf.paths.src, '/**/*.spec.js'),
