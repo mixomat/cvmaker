@@ -18,7 +18,7 @@
     function loadProjects() {
       Project.all(function (data) {
         vm.projects = _.get(data, '_embedded.projects', []);
-        $log.debug('loaded projects: ' + JSON.stringify(vm.projects));
+        $log.debug('loaded projects: ' + JSON.stringify(vm.projects, null, 2));
       });
     }
 
@@ -27,7 +27,7 @@
     }
 
     function editProject(project) {
-      $log.debug('editing project: ' + JSON.stringify(project));
+      $log.debug('editing project: ' + project.id);
     }
   }
 })();
