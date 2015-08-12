@@ -6,7 +6,7 @@ import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguration;
 
 /**
- * TODO document me
+ * REST repository customization.
  *
  * @author Marc Weinberger, marc.weinberger@me.com
  * @since 12.08.15
