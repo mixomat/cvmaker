@@ -9,9 +9,13 @@
   function MainController($log, toastr, Project, _) {
     var vm = this;
 
-    vm.creationDate = 1438285936992;
+    vm.isCreating = false;
+
     vm.showToastr = showToastr;
+
+    vm.newProject = newProject;
     vm.editProject = editProject;
+    vm.saveProject = saveProject;
 
     loadProjects();
 
@@ -22,12 +26,37 @@
       });
     }
 
+    function newProject() {
+      vm.isCreating = true;
+      vm.project = new Project();
+    }
+
     function showToastr() {
       toastr.info('Hello');
     }
 
     function editProject(project) {
       $log.debug('editing project: ' + project.id);
+      vm.project = project;
     }
+
+    function saveProject(project) {
+      $log.debug('saving project: ', project);
+
+      if (project.id) {
+        Project.update({id: project.id}, project);
+      } else {
+        project.$save().then(loadProjects);
+        // TODO
+        //$scope.post.$save().then(function(response) {
+        //  $scope.posts.push(response)
+        //});
+      }
+
+      vm.isCreating = false;
+      vm.project = new Project();
+    }
+
   }
+
 })();
