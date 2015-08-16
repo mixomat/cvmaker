@@ -11,8 +11,6 @@
 
     vm.isCreating = false;
 
-    vm.showToastr = showToastr;
-
     vm.newProject = newProject;
     vm.editProject = editProject;
     vm.saveProject = saveProject;
@@ -31,10 +29,6 @@
       vm.project = new Project();
     }
 
-    function showToastr() {
-      toastr.info('Hello');
-    }
-
     function editProject(project) {
       $log.debug('editing project: ' + project.id);
       vm.project = project;
@@ -46,17 +40,28 @@
       if (project.id) {
         Project.update({id: project.id}, project);
       } else {
-        project.$save().then(loadProjects);
+        project.$save().then(handleProjectSave);
         // TODO
         //$scope.post.$save().then(function(response) {
         //  $scope.posts.push(response)
         //});
       }
+    }
 
+    function handleProjectSave() {
+      resetProject();
+      showSaveNotification();
+      loadProjects();
+    }
+
+    function resetProject() {
       vm.isCreating = false;
       vm.project = new Project();
     }
 
+    function showSaveNotification() {
+      toastr.info('Project saved');
+    }
   }
 
 })();
