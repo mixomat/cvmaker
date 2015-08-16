@@ -1,5 +1,6 @@
 package de.marcweinberger.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
@@ -14,97 +15,102 @@ import java.time.LocalDateTime;
 @Document
 public class Project {
 
-	private String id;
-	private String title;
-	private String role;
-	private String customer;
-	private String sector;
-	private String description;
-	private LocalDate startDate;
-	private LocalDate endDate;
-	private LocalDateTime createdAt;
-	private LocalDateTime updatedAt;
+  private String id;
+  private String title;
+  private String role;
+  private String customer;
+  private String sector;
+  private String description;
 
-	public Project() {
-	}
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+  private LocalDate startDate;
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+  private LocalDate endDate;
 
-	public LocalDateTime getCreatedAt() {
-		return createdAt;
-	}
+  private LocalDateTime createdAt;
+  private LocalDateTime updatedAt;
 
-	public void setCreatedAt(LocalDateTime createdAt) {
-		this.createdAt = createdAt;
-	}
+  public Project() {
+  }
 
-	public String getCustomer() {
-		return customer;
-	}
 
-	public void setCustomer(String customer) {
-		this.customer = customer;
-	}
+  public LocalDateTime getCreatedAt() {
+    return createdAt;
+  }
 
-	public String getDescription() {
-		return description;
-	}
+  public void setCreatedAt(LocalDateTime createdAt) {
+    this.createdAt = createdAt;
+  }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+  public String getCustomer() {
+    return customer;
+  }
 
-	public LocalDate getEndDate() {
-		return endDate;
-	}
+  public void setCustomer(String customer) {
+    this.customer = customer;
+  }
 
-	public void setEndDate(LocalDate endDate) {
-		this.endDate = endDate;
-	}
+  public String getDescription() {
+    return description;
+  }
 
-	public String getId() {
-		return id;
-	}
+  public void setDescription(String description) {
+    this.description = description;
+  }
 
-	public void setId(String id) {
-		this.id = id;
-	}
+  public LocalDate getEndDate() {
+    return endDate;
+  }
 
-	public String getRole() {
-		return role;
-	}
+  public void setEndDate(LocalDate endDate) {
+    this.endDate = endDate;
+  }
 
-	public void setRole(String role) {
-		this.role = role;
-	}
+  public String getId() {
+    return id;
+  }
 
-	public String getSector() {
-		return sector;
-	}
+  public void setId(String id) {
+    this.id = id;
+  }
 
-	public void setSector(String sector) {
-		this.sector = sector;
-	}
+  public String getRole() {
+    return role;
+  }
 
-	public LocalDate getStartDate() {
-		return startDate;
-	}
+  public void setRole(String role) {
+    this.role = role;
+  }
 
-	public void setStartDate(LocalDate startDate) {
-		this.startDate = startDate;
-	}
+  public String getSector() {
+    return sector;
+  }
 
-	public String getTitle() {
-		return title;
-	}
+  public void setSector(String sector) {
+    this.sector = sector;
+  }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+  public LocalDate getStartDate() {
+    return startDate;
+  }
 
-	public LocalDateTime getUpdatedAt() {
-		return updatedAt;
-	}
+  public void setStartDate(LocalDate startDate) {
+    this.startDate = startDate;
+  }
 
-	public void setUpdatedAt(LocalDateTime updatedAt) {
-		this.updatedAt = updatedAt;
-	}
+  public String getTitle() {
+    return title;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+  public LocalDateTime getUpdatedAt() {
+    return updatedAt;
+  }
+
+  public void setUpdatedAt(LocalDateTime updatedAt) {
+    this.updatedAt = updatedAt;
+  }
 }

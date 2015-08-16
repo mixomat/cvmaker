@@ -56,6 +56,11 @@
       <artifactId>de.flapdoodle.embed.mongo</artifactId>
       <version>1.48.2</version>
     </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.datatype</groupId>
+      <artifactId>jackson-datatype-jsr310</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
 
     <!-- TEST -->
     <dependency>
