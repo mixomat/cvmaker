@@ -3,8 +3,8 @@ package de.marcweinberger.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.YearMonth;
 
 /**
  * Project entity.
@@ -22,10 +22,10 @@ public class Project {
   private String sector;
   private String description;
 
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
-  private LocalDate startDate;
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
-  private LocalDate endDate;
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM/yyyy")
+  private YearMonth start;
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM/yyyy")
+  private YearMonth end;
 
   private LocalDateTime createdAt;
   private LocalDateTime updatedAt;
@@ -58,12 +58,12 @@ public class Project {
     this.description = description;
   }
 
-  public LocalDate getEndDate() {
-    return endDate;
+  public YearMonth getEnd() {
+    return end;
   }
 
-  public void setEndDate(LocalDate endDate) {
-    this.endDate = endDate;
+  public void setEnd(YearMonth end) {
+    this.end = end;
   }
 
   public String getId() {
@@ -90,12 +90,12 @@ public class Project {
     this.sector = sector;
   }
 
-  public LocalDate getStartDate() {
-    return startDate;
+  public YearMonth getStart() {
+    return start;
   }
 
-  public void setStartDate(LocalDate startDate) {
-    this.startDate = startDate;
+  public void setStart(YearMonth start) {
+    this.start = start;
   }
 
   public String getTitle() {

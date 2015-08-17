@@ -1,14 +1,11 @@
 package de.marcweinberger.repository;
 
-import de.marcweinberger.CVMakerApp;
+import de.marcweinberger.CVMakerIntegrationTest;
 import de.marcweinberger.model.Project;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -24,10 +21,8 @@ import static org.hamcrest.Matchers.hasSize;
  * @author Marc Weinberger, marc.weinberger@me.com
  * @since 10.07.15
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = CVMakerApp.class)
 @Transactional
-public class ProjectRepositoryTest {
+public class ProjectRepositoryTest extends CVMakerIntegrationTest {
 
   @Autowired
   private ProjectRepository projectRepository;

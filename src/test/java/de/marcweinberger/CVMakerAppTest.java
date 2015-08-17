@@ -1,28 +1,34 @@
 package de.marcweinberger;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = CVMakerApp.class)
-@WebAppConfiguration
-public class CVMakerAppTest {
+public class CVMakerAppTest extends CVMakerIntegrationTest {
 
 	@Autowired
 	private MongoTemplate mongoTemplate;
 
+  @Value("${security.user.name}")
+  private String username;
+
+  @Value("${security.user.password}")
+  private String password;
+
+  @Test
+  public void username() {
+    assertThat(username, is("admin"));
+  }
+
 	@Test
-	public void contextLoads() {
-	}
+  public void password() {
+    assertThat(password, is("secret"));
+  }
 
 	@Test
 	public void mongoTemplate() throws Exception {
