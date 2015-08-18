@@ -4,6 +4,7 @@ import de.marcweinberger.converter.DateToYearMonthConverter;
 import de.marcweinberger.converter.YearMonthToDateConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.mongodb.config.EnableMongoAuditing;
 import org.springframework.data.mongodb.core.convert.CustomConversions;
 
 import java.util.Arrays;
@@ -15,6 +16,7 @@ import java.util.Arrays;
  * @since 18.08.15
  */
 @Configuration
+@EnableMongoAuditing
 public class MongoConversionConfig {
 
   @Bean

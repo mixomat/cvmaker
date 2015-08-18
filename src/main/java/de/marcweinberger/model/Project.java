@@ -1,6 +1,8 @@
 package de.marcweinberger.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
@@ -27,7 +29,9 @@ public class Project {
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM/yyyy")
   private YearMonth end;
 
+  @CreatedDate
   private LocalDateTime createdAt;
+  @LastModifiedDate
   private LocalDateTime updatedAt;
 
   public Project() {
