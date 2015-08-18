@@ -5,7 +5,7 @@
 
 <md-card ng-show="main.isCreating">
   <md-card-content>
-    <form ng-submit="main.saveProject(main.project)">
+    <form name="projectForm" ng-submit="main.saveProject(main.project)">
       <div layout-padding layout="row" layout-sm="column">
         <md-input-container flex="70">
           <label>Title</label>
@@ -32,6 +32,12 @@
         <md-input-container flex>
           <label>Sector</label>
           <input ng-model="main.project.sector">
+        </md-input-container>
+      </div>
+      <div layout-padding layout="row" layout-sm="column">
+        <md-input-container flex>
+          <label>Description</label>
+          <textarea ng-model="main.project.description"/>
         </md-input-container>
       </div>
       <div class="md-actions" layout="row" layout-align="end start">
