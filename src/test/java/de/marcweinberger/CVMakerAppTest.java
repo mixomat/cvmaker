@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.convert.CustomConversions;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
@@ -14,11 +15,15 @@ public class CVMakerAppTest extends CVMakerIntegrationTest {
 	@Autowired
 	private MongoTemplate mongoTemplate;
 
+  @Autowired
+  private CustomConversions customerConversion;
+
   @Value("${security.user.name}")
   private String username;
 
   @Value("${security.user.password}")
   private String password;
+
 
   @Test
   public void username() {
@@ -35,4 +40,8 @@ public class CVMakerAppTest extends CVMakerIntegrationTest {
 		assertThat(mongoTemplate, is(notNullValue()));
 	}
 
+  @Test
+  public void customConversions() throws Exception {
+    assertThat(customerConversion, is(notNullValue()));
+  }
 }

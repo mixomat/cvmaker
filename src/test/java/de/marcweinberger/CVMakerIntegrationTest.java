@@ -13,6 +13,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = CVMakerApp.class)
-@WebIntegrationTest("server.port:0")
+@WebIntegrationTest(randomPort = true)
 public abstract class CVMakerIntegrationTest {
 }
