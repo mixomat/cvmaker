@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.core.convert.CustomConversions;
 import java.util.Arrays;
 
 /**
- * Custom configuration for conversion
+ * Custom configuration for mongo date conversion.
  *
  * @author Marc Weinberger, marc.weinberger@me.com
  * @since 18.08.15
