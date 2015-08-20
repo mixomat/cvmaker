@@ -9,65 +9,44 @@
   function MainController($log, toastr, Project, _) {
     var vm = this;
 
-    vm.isCreating = false;
-
     vm.newProject = newProject;
     vm.editProject = editProject;
-    vm.saveProject = saveProject;
-    vm.cancel = cancel;
+    vm.onSave = onSave;
+    vm.onCancel = onCancel;
 
     loadProjects();
-    resetProject();
 
     function loadProjects() {
       Project.all(function (data) {
         vm.projects = _.get(data, '_embedded.projects', []);
-        $log.debug('loaded projects: ' + JSON.stringify(vm.projects, null, 2));
+        $log.debug('loaded projects: ', vm.projects);
       });
     }
 
     function newProject() {
-      vm.isCreating = true;
+      $log.debug('creating new project');
+      vm.editing = true;
       vm.project = new Project();
-    }
-
-    function cancel() {
-      resetProject();
     }
 
     function editProject(project) {
       $log.debug('editing project: ' + project.id);
+      vm.editing = true;
       vm.project = project;
     }
 
-    function saveProject(project) {
-      $log.debug('saving project: ', project);
-
-      if (project.id) {
-        Project.update({id: project.id}, project);
-      } else {
-        project.$save().then(handleProjectSave);
-        // TODO
-        //$scope.post.$save().then(function(response) {
-        //  $scope.posts.push(response)
-        //});
-      }
-    }
-
-    function handleProjectSave() {
-      resetProject();
+    function onSave() {
+      vm.editing = false;
       showSaveNotification();
       loadProjects();
     }
 
-    function resetProject() {
-      vm.isCreating = false;
-      vm.project = new Project();
+    function onCancel() {
+      vm.editing = false;
     }
 
     function showSaveNotification() {
       toastr.info('Project saved');
     }
   }
-
 })();

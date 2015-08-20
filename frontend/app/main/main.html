@@ -1,55 +1,13 @@
 <header>
   <cv-navbar title="Projects"/>
 </header>
-<div ng-hide="main.isCreating" layout="row" layout-align="end start">
+<div layout="row" layout-align="end start">
   <md-button ng-click="main.newProject()" class="md-fab md-mini">
     <md-icon>add</md-icon>
   </md-button>
 </div>
-<md-card ng-show="main.isCreating">
-  <md-card-content>
-    <form name="projectForm" ng-submit="main.saveProject(main.project)">
-      <div layout-padding layout="row" layout-sm="column">
-        <md-input-container flex="70">
-          <label>Title</label>
-          <input ng-model="main.project.title">
-        </md-input-container>
-        <md-input-container flex>
-          <label>Start (MM/YYYY)</label>
-          <input ng-model="main.project.start">
-        </md-input-container>
-        <md-input-container flex>
-          <label>End (MM/YYYY)</label>
-          <input ng-model="main.project.end">
-        </md-input-container>
-      </div>
-      <div layout-padding layout="row" layout-sm="column">
-        <md-input-container flex>
-          <label>Role</label>
-          <input ng-model="main.project.role">
-        </md-input-container>
-        <md-input-container flex>
-          <label>Client</label>
-          <input ng-model="main.project.customer">
-        </md-input-container>
-        <md-input-container flex>
-          <label>Sector</label>
-          <input ng-model="main.project.sector">
-        </md-input-container>
-      </div>
-      <div layout-padding layout="row" layout-sm="column">
-        <md-input-container flex>
-          <label>Description</label>
-          <textarea ng-model="main.project.description"/>
-        </md-input-container>
-      </div>
-      <div class="md-actions" layout="row" layout-align="end start">
-        <md-button type="submit" class="md-primary">Save</md-button>
-        <md-button type="button" ng-click="main.cancel()">Cancel</md-button>
-      </div>
-    </form>
-  </md-card-content>
-</md-card>
+<cv-project project="main.project" on-save="main.onSave()" on-cancel="main.onCancel()"
+            ng-show="main.editing"></cv-project>
 
 <md-card ng-repeat="project in main.projects">
   <md-card-content>
@@ -74,13 +32,13 @@
       <div flex class="md-caption">Description</div>
       <div flex>{{project.description}}</div>
     </div>
-  <div class="md-actions" layout="row" layout-align="end start">
-    <md-button class="md-icon-button" ng-click="main.editProject(project)">
-      <md-icon aria-label="Edit">mode_edit</md-icon>
-    </md-button>
-    <md-button class="md-icon-button">
-      <md-icon aria-label="Delete">delete</md-icon>
-    </md-button>
-  </div>
+    <div class="md-actions" layout="row" layout-align="end start">
+      <md-button class="md-icon-button" ng-click="main.editProject(project)">
+        <md-icon aria-label="Edit">mode_edit</md-icon>
+      </md-button>
+      <md-button class="md-icon-button">
+        <md-icon aria-label="Delete">delete</md-icon>
+      </md-button>
+    </div>
   </md-card-content>
 </md-card>

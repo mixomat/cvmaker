@@ -1,0 +1,44 @@
+<md-card>
+  <md-card-content>
+    <form name="projectForm" ng-submit="ctrl.saveProject()">
+      <div layout-padding layout="row" layout-sm="column">
+        <md-input-container flex="70">
+          <label>Title</label>
+          <input ng-model="ctrl.project.title">
+        </md-input-container>
+        <md-input-container flex>
+          <label>Start (MM/YYYY)</label>
+          <input ng-model="ctrl.project.start">
+        </md-input-container>
+        <md-input-container flex>
+          <label>End (MM/YYYY)</label>
+          <input ng-model="ctrl.project.end">
+        </md-input-container>
+      </div>
+      <div layout-padding layout="row" layout-sm="column">
+        <md-input-container flex>
+          <label>Role</label>
+          <input ng-model="ctrl.project.role">
+        </md-input-container>
+        <md-input-container flex>
+          <label>Client</label>
+          <input ng-model="ctrl.project.customer">
+        </md-input-container>
+        <md-input-container flex>
+          <label>Sector</label>
+          <input ng-model="ctrl.project.sector">
+        </md-input-container>
+      </div>
+      <div layout-padding layout="row" layout-sm="column">
+        <md-input-container flex>
+          <label>Description</label>
+          <textarea ng-model="ctrl.project.description"/>
+        </md-input-container>
+      </div>
+      <div class="md-actions" layout="row" layout-align="end start">
+        <md-button type="submit" class="md-primary">Save</md-button>
+        <md-button type="button" ng-click="ctrl.onCancel()">Cancel</md-button>
+      </div>
+    </form>
+  </md-card-content>
+</md-card>

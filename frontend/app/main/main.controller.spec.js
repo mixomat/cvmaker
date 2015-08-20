@@ -29,18 +29,18 @@
       expect(_.first(main.projects).id).toBe(1);
     });
 
-    it('should define a isCreating property', function () {
-      expect(main.isCreating).toBeFalsy();
+    it('should define a editing property', function () {
+      expect(main.editing).toBeFalsy();
     });
 
     it('should define a newProject function', function () {
       expect(main.newProject).toBeDefined();
     });
 
-    it('should set isCreating to true, when newProject is executed', function () {
+    it('should set editing to true, when newProject is executed', function () {
       main.newProject();
 
-      expect(main.isCreating).toBeTruthy();
+      expect(main.editing).toBeTruthy();
     });
 
     it('should define a project property when newProject is executed', function () {
@@ -53,12 +53,12 @@
       expect(main.editProject).toBeDefined();
     });
 
-    it('should define a saveProject function', function () {
-      expect(main.saveProject).toBeDefined();
+    it('should define a onSave function', function () {
+      expect(main.onSave).toBeDefined();
     });
 
-    it('should define a cancel function', function () {
-      expect(main.cancel).toBeDefined();
+    it('should define a onCancel function', function () {
+      expect(main.onCancel).toBeDefined();
     });
   });
 })();
