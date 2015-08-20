@@ -7,7 +7,7 @@
 
   /** @ngInject */
   function cvNavbar() {
-    var directive = {
+    return {
       restrict: 'E',
       templateUrl: 'app/components/navbar/navbar.html',
       scope: {},
@@ -15,13 +15,9 @@
         title: '@'
       },
       controller: function () {
-        var vm = this;
-        vm.pageTitle = vm.title;
       },
       controllerAs: 'vm'
     };
-
-    return directive;
   }
 
 })();
