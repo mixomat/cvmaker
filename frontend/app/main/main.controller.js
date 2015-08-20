@@ -14,8 +14,10 @@
     vm.newProject = newProject;
     vm.editProject = editProject;
     vm.saveProject = saveProject;
+    vm.cancel = cancel;
 
     loadProjects();
+    resetProject();
 
     function loadProjects() {
       Project.all(function (data) {
@@ -26,7 +28,10 @@
 
     function newProject() {
       vm.isCreating = true;
-      vm.project = new Project();
+    }
+
+    function cancel() {
+      resetProject();
     }
 
     function editProject(project) {

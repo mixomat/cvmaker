@@ -53,8 +53,12 @@
       expect(main.editProject).toBeDefined();
     });
 
-    it('should define a save function', function () {
+    it('should define a saveProject function', function () {
       expect(main.saveProject).toBeDefined();
+    });
+
+    it('should define a cancel function', function () {
+      expect(main.cancel).toBeDefined();
     });
   });
 })();
