@@ -16,7 +16,7 @@
       },
       controller: function () {
       },
-      controllerAs: 'vm'
+      controllerAs: 'nav'
     };
   }
 
