@@ -1,12 +1,11 @@
 <header>
   <cv-navbar title="Projects"/>
 </header>
-<div layout="row" layout-align="end start">
-  <md-button ng-click="main.newProject()" class="md-fab">
+<div ng-hide="main.isCreating" layout="row" layout-align="end start">
+  <md-button ng-click="main.newProject()" class="md-fab md-mini">
     <md-icon>add</md-icon>
   </md-button>
 </div>
-
 <md-card ng-show="main.isCreating">
   <md-card-content>
     <form name="projectForm" ng-submit="main.saveProject(main.project)">
