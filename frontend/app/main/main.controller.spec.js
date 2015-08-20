@@ -12,7 +12,7 @@
       main = $controller('MainController');
       httpBackend = _$httpBackend_;
 
-      httpBackend.when('GET', '/projects').respond({
+      httpBackend.when('GET', '/projects?sort=start,desc').respond({
         _embedded: {
           projects: [{id: 1}, {id: 2}]
         }
