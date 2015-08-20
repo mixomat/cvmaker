@@ -56,7 +56,6 @@
     <h2 class="md-headline">{{project.title}} <span class="md-subhead">({{project.start}} - {{project.end}})</span></h2>
 
     <div layout="row" layout-fill>
-
       <div layout="column" flex="25" layout-fill>
         <div flex class="md-caption">Role</div>
         <div flex>{{project.role}}</div>
@@ -75,7 +74,6 @@
       <div flex class="md-caption">Description</div>
       <div flex>{{project.description}}</div>
     </div>
-  </md-card-content>
   <div class="md-actions" layout="row" layout-align="end start">
     <md-button class="md-icon-button" ng-click="main.editProject(project)">
       <md-icon aria-label="Edit">mode_edit</md-icon>
@@ -84,4 +82,5 @@
       <md-icon aria-label="Delete">delete</md-icon>
     </md-button>
   </div>
+  </md-card-content>
 </md-card>
