@@ -77,7 +77,11 @@
     </div>
   </md-card-content>
   <div class="md-actions" layout="row" layout-align="end start">
-    <md-button ng-click="main.editProject(project)">Edit</md-button>
-    <md-button>Delete</md-button>
+    <md-button class="md-icon-button" ng-click="main.editProject(project)">
+      <md-icon aria-label="Edit">mode_edit</md-icon>
+    </md-button>
+    <md-button class="md-icon-button">
+      <md-icon aria-label="Delete">delete</md-icon>
+    </md-button>
   </div>
 </md-card>
