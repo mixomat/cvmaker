@@ -11,7 +11,7 @@
     $logProvider.debugEnabled(true);
 
     // material theme
-    $mdThemingProvider.theme('default').primaryPalette('light-blue').accentPalette('amber');
+    $mdThemingProvider.theme('default').primaryPalette('blue').accentPalette('lime');
 
     // Set options third-party lib
     toastr.options.timeOut = 3000;

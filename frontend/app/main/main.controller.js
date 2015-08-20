@@ -28,6 +28,7 @@
 
     function newProject() {
       vm.isCreating = true;
+      vm.project = new Project();
     }
 
     function cancel() {
