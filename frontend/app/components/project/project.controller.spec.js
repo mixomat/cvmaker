@@ -5,7 +5,7 @@
     var ctrl, scope, httpBackend;
 
     beforeEach(module('cvmaker'));
-    beforeEach(inject(function ($rootScope, $controller, _$httpBackend_, Project) {
+    beforeEach(inject(function ($rootScope, $controller, _$httpBackend_, _$log_, Project) {
       httpBackend = _$httpBackend_;
       scope = $rootScope.$new();
       var ctrlBinding = {
@@ -15,7 +15,7 @@
         onCancel: function () {
         }
       };
-      ctrl = $controller('ProjectController', {$scope: scope}, ctrlBinding);
+      ctrl = $controller('ProjectController', {$scope: scope, $log: _$log_}, ctrlBinding);
     }));
 
 
@@ -43,10 +43,10 @@
     });
 
     it('should put a project when saving existing project', function () {
-      ctrl.project.id = 1;
+      ctrl.project._links = {self: {href: 'http://localhost:8080/projects/123abc'}};
       ctrl.saveProject();
 
-      httpBackend.expect('PUT', '/projects/1', ctrl.project).respond('200', '');
+      httpBackend.expect('PUT', '/projects/123abc', ctrl.project).respond('200', '');
       httpBackend.flush();
     });
 

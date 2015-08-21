@@ -7,17 +7,28 @@
 
   /** @ngInject */
   function ProjectController($log, Project) {
-    var vm = this;
+    var vm = this, selfLinkPath = '_links.self.href';
     vm.saveProject = saveProject;
 
     function saveProject() {
-      $log.debug('saving project: ', vm.project);
-
-      if (vm.project.id) {
-        Project.update(vm.project).$promise.then(vm.onSave);
+      if (hasId()) {
+        $log.debug('updating existing project: ', vm.project);
+        Project.update({projectId: getId()}, vm.project).$promise.then(vm.onSave);
       } else {
+        $log.debug('creating new project: ', vm.project);
         vm.project.$save().then(vm.onSave);
       }
+    }
+
+    function hasId() {
+      return _.has(vm.project, selfLinkPath)
+    }
+
+    function getId() {
+      var self = _.get(vm.project, selfLinkPath);
+      var words = _.words(self, /[^:/]+/g);
+
+      return _.last(words);
     }
   }
 
