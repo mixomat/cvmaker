@@ -1,3 +1,4 @@
+/* global _:false */
 (function () {
   'use strict';
 
@@ -21,7 +22,7 @@
     }
 
     function hasId() {
-      return _.has(vm.project, selfLinkPath)
+      return _.has(vm.project, selfLinkPath);
     }
 
     function getId() {

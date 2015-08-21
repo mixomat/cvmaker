@@ -11,6 +11,7 @@
 
     vm.newProject = newProject;
     vm.editProject = editProject;
+    vm.deleteProject = deleteProject;
     vm.onSave = onSave;
     vm.onCancel = onCancel;
 
@@ -35,9 +36,13 @@
       vm.project = project;
     }
 
+    function deleteProject(project) {
+      Project.delete({projectId: project.id}).$promise.then(onDelete);
+    }
+
     function onSave() {
       vm.editing = false;
-      showSaveNotification();
+      toastr.info('Project saved');
       loadProjects();
     }
 
@@ -45,8 +50,10 @@
       vm.editing = false;
     }
 
-    function showSaveNotification() {
-      toastr.info('Project saved');
+    function onDelete() {
+      toastr.info('Project deleted');
+      loadProjects();
     }
-  }
+
+    }
 })();
