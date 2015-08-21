@@ -2,7 +2,7 @@
   'use strict';
 
   describe('Controller: project', function () {
-    var project, scope, httpBackend;
+    var ctrl, scope, httpBackend;
 
     beforeEach(module('cvmaker'));
     beforeEach(inject(function ($rootScope, $controller, _$httpBackend_, Project) {
@@ -15,31 +15,38 @@
         onCancel: function () {
         }
       };
-      project = $controller('ProjectController', {$scope: scope}, ctrlBinding);
-
+      ctrl = $controller('ProjectController', {$scope: scope}, ctrlBinding);
     }));
 
 
     it('should have a project property', function () {
-      expect(project.onSave).toBeDefined();
+      expect(ctrl.project).toBeDefined();
     });
 
     it('should have a onSave function', function () {
-      expect(project.onSave).toBeDefined();
+      expect(ctrl.onSave).toBeDefined();
     });
 
     it('should have a onCancel function', function () {
-      expect(project.onCancel).toBeDefined();
+      expect(ctrl.onCancel).toBeDefined();
     });
 
     it('should define a saveProject function', function () {
-      expect(project.saveProject).toBeDefined();
+      expect(ctrl.saveProject).toBeDefined();
     });
 
-    it('should post a project on saveProject', function () {
-      project.saveProject();
+    it('should post a project on saving project', function () {
+      ctrl.saveProject();
 
-      httpBackend.expect('POST', '/projects', project.project).respond('201', '');
+      httpBackend.expect('POST', '/projects', ctrl.project).respond('201', '');
+      httpBackend.flush();
+    });
+
+    it('should put a project when saving existing project', function () {
+      ctrl.project.id = 1;
+      ctrl.saveProject();
+
+      httpBackend.expect('PUT', '/projects/1', ctrl.project).respond('200', '');
       httpBackend.flush();
     });
 

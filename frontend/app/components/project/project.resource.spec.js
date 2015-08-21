@@ -15,9 +15,14 @@
       expect(Project).toBeDefined();
     });
 
-    it('should expose an all functoin', function () {
+    it('should expose an all function', function () {
       expect(Project.all).toBeDefined();
     });
+
+    it('should expose an update function', function () {
+      expect(Project.update).toBeDefined();
+    });
+
   });
 
 

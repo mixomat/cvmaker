@@ -6,7 +6,7 @@
     .controller('ProjectController', ProjectController);
 
   /** @ngInject */
-  function ProjectController($log) {
+  function ProjectController($log, Project) {
     var vm = this;
     vm.saveProject = saveProject;
 
@@ -14,7 +14,7 @@
       $log.debug('saving project: ', vm.project);
 
       if (vm.project.id) {
-        Project.update({id: vm.project.id}, vm.project).then(vm.onSave);
+        Project.update(vm.project).$promise.then(vm.onSave);
       } else {
         vm.project.$save().then(vm.onSave);
       }
