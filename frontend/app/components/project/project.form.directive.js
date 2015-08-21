@@ -3,13 +3,13 @@
 
   angular
     .module('cvmaker')
-    .directive('cvProject', cvProject);
+    .directive('projectForm', ProjectForm);
 
   /** @ngInject */
-  function cvProject() {
+  function ProjectForm() {
     return {
       restrict: 'E',
-      templateUrl: 'app/components/project/project.html',
+      templateUrl: 'app/components/project/project.form.html',
       scope: true,
       bindToController: {
         project: '=',

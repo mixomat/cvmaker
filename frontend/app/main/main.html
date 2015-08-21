@@ -6,8 +6,8 @@
     <md-icon>add</md-icon>
   </md-button>
 </div>
-<cv-project project="main.project" on-save="main.onSave()" on-cancel="main.onCancel()"
-            ng-show="main.editing"></cv-project>
+<project-form project="main.project" on-save="main.onSave()" on-cancel="main.onCancel()"
+              ng-show="main.editing"></project-form>
 
 <md-card ng-repeat="project in main.projects">
   <md-card-content>
