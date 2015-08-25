@@ -32,7 +32,7 @@
     function editProject(project) {
       $log.debug('editing project: ' + project.id);
       vm.editing = true;
-      vm.project = project;
+      vm.project = angular.copy(project);
     }
 
     function onUpdate() {
