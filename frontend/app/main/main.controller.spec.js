@@ -53,8 +53,8 @@
       expect(main.editProject).toBeDefined();
     });
 
-    it('should define a onSave function', function () {
-      expect(main.onSave).toBeDefined();
+    it('should define a onUpdate function', function () {
+      expect(main.onUpdate).toBeDefined();
     });
 
     it('should define a onCancel function', function () {

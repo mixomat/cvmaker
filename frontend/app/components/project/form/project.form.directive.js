@@ -13,8 +13,8 @@
       scope: true,
       bindToController: {
         project: '=',
-        onSave: '&',
-        onCancel: '&'
+        onUpdate: '=',
+        onCancel: '='
       },
       controller: 'ProjectController as ctrl'
     };

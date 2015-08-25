@@ -6,13 +6,12 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($log, toastr, Project, _) {
+  function MainController($log, Project, _) {
     var vm = this;
 
     vm.newProject = newProject;
     vm.editProject = editProject;
-    vm.deleteProject = deleteProject;
-    vm.onSave = onSave;
+    vm.onUpdate = onUpdate;
     vm.onCancel = onCancel;
 
     loadProjects();
@@ -25,7 +24,7 @@
     }
 
     function newProject() {
-      $log.debug('creating new project');
+      $log.debug('start creation of new project');
       vm.editing = true;
       vm.project = new Project();
     }
@@ -36,13 +35,8 @@
       vm.project = project;
     }
 
-    function deleteProject(project) {
-      Project.delete({projectId: project.id}).$promise.then(onDelete);
-    }
-
-    function onSave() {
+    function onUpdate() {
       vm.editing = false;
-      toastr.info('Project saved');
       loadProjects();
     }
 
@@ -50,10 +44,5 @@
       vm.editing = false;
     }
 
-    function onDelete() {
-      toastr.info('Project deleted');
-      loadProjects();
-    }
-
-    }
+  }
 })();

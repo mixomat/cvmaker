@@ -10,7 +10,7 @@
       scope = $rootScope.$new();
       var ctrlBinding = {
         project: new Project(),
-        onSave: function () {
+        onUpdate: function () {
         },
         onCancel: function () {
         }
@@ -23,8 +23,8 @@
       expect(ctrl.project).toBeDefined();
     });
 
-    it('should have a onSave function', function () {
-      expect(ctrl.onSave).toBeDefined();
+    it('should have a onUpdate function', function () {
+      expect(ctrl.onUpdate).toBeDefined();
     });
 
     it('should have a onCancel function', function () {

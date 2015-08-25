@@ -1,4 +1,4 @@
-/* global _:false */
+/* global _:false, toastr: false */
 (function () {
   'use strict';
 
@@ -7,17 +7,18 @@
     .controller('ProjectController', ProjectController);
 
   /** @ngInject */
-  function ProjectController($log, Project) {
+  function ProjectController($log, toastr, Project) {
     var vm = this, selfLinkPath = '_links.self.href';
     vm.saveProject = saveProject;
+
 
     function saveProject() {
       if (hasId()) {
         $log.debug('updating existing project: ', vm.project);
-        Project.update({projectId: getId()}, vm.project).$promise.then(vm.onSave);
+        Project.update({projectId: getId()}, vm.project).$promise.then(saved);
       } else {
         $log.debug('creating new project: ', vm.project);
-        vm.project.$save().then(vm.onSave);
+        vm.project.$save().then(saved);
       }
     }
 
@@ -31,6 +32,12 @@
 
       return _.last(words);
     }
+
+    function saved() {
+      toastr.info('Project saved');
+      vm.onUpdate();
+    }
+
   }
 
 })();
