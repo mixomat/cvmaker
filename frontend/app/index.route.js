@@ -5,16 +5,15 @@
     .module('cvmaker')
     .config(routeConfig);
 
-  function routeConfig($routeProvider) {
-    $routeProvider
-      .when('/', {
+  function routeConfig($stateProvider, $urlRouterProvider) {
+    $stateProvider
+      .state('projects', {
+        url: '/projects',
         templateUrl: 'app/main/main.html',
-        controller: 'MainController',
-        controllerAs: 'main'
-      })
-      .otherwise({
-        redirectTo: '/'
+        controller: 'MainController as main'
       });
+
+    $urlRouterProvider.otherwise("/projects");
   }
 
 })();
