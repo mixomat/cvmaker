@@ -1,4 +1,3 @@
-/* global toastr: false */
 (function () {
   'use strict';
 

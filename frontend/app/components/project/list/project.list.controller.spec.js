@@ -12,7 +12,7 @@
     }));
 
     it('should define a deleteProject function', function () {
-      expect(projectList.deleteProject).toBeDefined()
+      expect(projectList.deleteProject).toBeDefined();
     });
   });
 })();
