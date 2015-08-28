@@ -2,17 +2,17 @@
 (function () {
   'use strict';
 
-  describe('Controller: main', function () {
+  describe('Controller: project', function () {
 
     beforeEach(module('cvmaker'));
 
-    var main, httpBackend;
+    var project, httpBackend;
 
     beforeEach(inject(function ($controller, _$httpBackend_) {
-      main = $controller('MainController');
+      project = $controller('ProjectController');
       httpBackend = _$httpBackend_;
 
-      httpBackend.when('GET', '/projects?sort=start,desc').respond({
+      httpBackend.when('GET', '/api/projects?sort=start,desc').respond({
         _embedded: {
           projects: [{id: 1}, {id: 2}]
         }
@@ -22,43 +22,43 @@
     }));
 
     it('should define projects', function () {
-      expect(main.projects).toBeDefined();
+      expect(project.projects).toBeDefined();
     });
 
     it('should define a project with id 1', function () {
-      expect(_.first(main.projects).id).toBe(1);
+      expect(_.first(project.projects).id).toBe(1);
     });
 
     it('should define a editing property', function () {
-      expect(main.editing).toBeFalsy();
+      expect(project.editing).toBeFalsy();
     });
 
     it('should define a newProject function', function () {
-      expect(main.newProject).toBeDefined();
+      expect(project.newProject).toBeDefined();
     });
 
     it('should set editing to true, when newProject is executed', function () {
-      main.newProject();
+      project.newProject();
 
-      expect(main.editing).toBeTruthy();
+      expect(project.editing).toBeTruthy();
     });
 
     it('should define a project property when newProject is executed', function () {
-      main.newProject();
+      project.newProject();
 
-      expect(main.project).toBeDefined();
+      expect(project.project).toBeDefined();
     });
 
     it('should define a editProject function', function () {
-      expect(main.editProject).toBeDefined();
+      expect(project.editProject).toBeDefined();
     });
 
     it('should define a onUpdate function', function () {
-      expect(main.onUpdate).toBeDefined();
+      expect(project.onUpdate).toBeDefined();
     });
 
     it('should define a onCancel function', function () {
-      expect(main.onCancel).toBeDefined();
+      expect(project.onCancel).toBeDefined();
     });
   });
 })();

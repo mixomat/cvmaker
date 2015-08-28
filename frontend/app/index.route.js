@@ -9,8 +9,8 @@
     $stateProvider
       .state('projects', {
         url: '/projects',
-        templateUrl: 'app/main/main.html',
-        controller: 'MainController as main'
+        templateUrl: 'app/components/project/project.html',
+        controller: 'ProjectController as project'
       });
 
     $urlRouterProvider.otherwise("/projects");

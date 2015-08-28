@@ -3,10 +3,10 @@
 
   angular
     .module('cvmaker')
-    .controller('MainController', MainController);
+    .controller('ProjectController', ProjectController);
 
   /** @ngInject */
-  function MainController($log, Project, _) {
+  function ProjectController($log, Project, _) {
     var vm = this;
 
     vm.newProject = newProject;
