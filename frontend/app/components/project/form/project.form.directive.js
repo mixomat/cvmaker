@@ -16,7 +16,7 @@
         onUpdate: '=',
         onCancel: '='
       },
-      controller: 'ProjectController as ctrl'
+      controller: 'ProjectFormController as ctrl'
     };
   }
 })();

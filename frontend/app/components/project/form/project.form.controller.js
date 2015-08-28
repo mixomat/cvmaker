@@ -4,10 +4,10 @@
 
   angular
     .module('cvmaker')
-    .controller('ProjectController', ProjectController);
+    .controller('ProjectFormController', ProjectFormController);
 
   /** @ngInject */
-  function ProjectController($log, toastr, Project) {
+  function ProjectFormController($log, toastr, Project) {
     var vm = this, selfLinkPath = '_links.self.href';
     vm.saveProject = saveProject;
 

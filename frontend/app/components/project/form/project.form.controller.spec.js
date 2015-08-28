@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  describe('Controller: project', function () {
+  describe('Controller: projectForm', function () {
     var ctrl, scope, httpBackend;
 
     beforeEach(module('cvmaker'));
@@ -15,7 +15,7 @@
         onCancel: function () {
         }
       };
-      ctrl = $controller('ProjectController', {$scope: scope, $log: _$log_}, ctrlBinding);
+      ctrl = $controller('ProjectFormController', {$scope: scope, $log: _$log_}, ctrlBinding);
     }));
 
 
