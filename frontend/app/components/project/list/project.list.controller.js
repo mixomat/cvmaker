@@ -6,7 +6,7 @@
     .controller('ProjectListController', ProjectListController);
 
   /** @ngInject */
-  function ProjectListController($log, $state, toastr, Project) {
+  function ProjectListController($log, toastr, Project) {
     var vm = this;
     vm.deleteProject = deleteProject;
 
