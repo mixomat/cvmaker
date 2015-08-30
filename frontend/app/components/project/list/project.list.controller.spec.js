@@ -16,7 +16,6 @@
         }
       });
 
-      httpBackend.expect('GET', 'app/components/project/list/project.list.html').respond(200);
       httpBackend.flush();
     }));
 
