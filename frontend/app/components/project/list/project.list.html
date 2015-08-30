@@ -1,4 +1,12 @@
-<md-card ng-repeat="project in ctrl.projects">
+<cv-navbar title="Projects"></cv-navbar>
+
+<div layout="row" layout-align="end start">
+  <md-button ui-sref="project" class="md-fab md-mini">
+    <md-icon>add</md-icon>
+  </md-button>
+</div>
+
+<md-card ng-repeat="project in projectList.projects">
   <md-card-content>
     <h2 class="md-headline">{{project.title}} <span class="md-subhead">({{project.start}} - {{project.end}})</span></h2>
 
@@ -22,10 +30,10 @@
       <div flex>{{project.description}}</div>
     </div>
     <div class="md-actions" layout="row" layout-align="end start">
-      <md-button class="md-icon-button" ng-click="ctrl.onEdit(project)">
+      <md-button class="md-icon-button" ui-sref="project({projectId: project.id})">
         <md-icon aria-label="Edit">mode_edit</md-icon>
       </md-button>
-      <md-button class="md-icon-button" ng-click="ctrl.deleteProject(project)">
+      <md-button class="md-icon-button" ng-click="projectList.deleteProject(project)">
         <md-icon aria-label="Delete">delete</md-icon>
       </md-button>
     </div>

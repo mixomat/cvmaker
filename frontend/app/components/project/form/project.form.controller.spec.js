@@ -39,6 +39,7 @@
       ctrl.saveProject();
 
       httpBackend.expect('POST', '/api/projects', ctrl.project).respond('201', '');
+      expectRedirect();
       httpBackend.flush();
     });
 
@@ -47,8 +48,13 @@
       ctrl.saveProject();
 
       httpBackend.expect('PUT', '/api/projects/123abc', ctrl.project).respond('200', '');
+      expectRedirect();
       httpBackend.flush();
     });
+
+    function expectRedirect() {
+      httpBackend.expect('GET', 'app/components/project/list/project.list.html').respond(200);
+    }
 
   });
 })();

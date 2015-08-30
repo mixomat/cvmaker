@@ -9,7 +9,23 @@
       projectList = $controller('ProjectListController');
       httpBackend = _$httpBackend_;
 
+      httpBackend.when('GET', '/api/projects?sort=start,desc').respond({
+        _embedded: {
+          projects: [{id: 1}, {id: 2}]
+        }
+      });
+
+      httpBackend.expect('GET', 'app/components/project/list/project.list.html').respond(200);
+      httpBackend.flush();
     }));
+
+    it('should load a list of projects', function () {
+      expect(projectList.projects).toBeDefined();
+    });
+
+    it('should define a project with id 1', function () {
+      expect(_.first(projectList.projects).id).toBe(1);
+    });
 
     it('should define a deleteProject function', function () {
       expect(projectList.deleteProject).toBeDefined();

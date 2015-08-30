@@ -7,7 +7,7 @@
     .controller('ProjectFormController', ProjectFormController);
 
   /** @ngInject */
-  function ProjectFormController($log, toastr, Project) {
+  function ProjectFormController($log, $state, toastr, Project) {
     var vm = this, selfLinkPath = '_links.self.href';
     vm.saveProject = saveProject;
 
@@ -35,7 +35,7 @@
 
     function saved() {
       toastr.info('Project saved');
-      vm.onUpdate();
+      $state.go('projects')
     }
 
   }

@@ -12,9 +12,7 @@
       templateUrl: 'app/components/project/form/project.form.html',
       scope: true,
       bindToController: {
-        project: '=',
-        onUpdate: '=',
-        onCancel: '='
+        project: '='
       },
       controller: 'ProjectFormController as ctrl'
     };
