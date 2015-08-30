@@ -16,10 +16,12 @@
         url: '/projects/:projectId',
         resolve: {
           project: ['$stateParams', 'Project', function ($stateParams, Project) {
-            if ($stateParams.projectId)
+            if ($stateParams.projectId) {
               return Project.get({projectId: $stateParams.projectId}).$promise;
-            else
+            }
+            else {
               return new Project();
+            }
           }]
         },
         templateUrl: 'app/components/project/edit/project.edit.html',

@@ -35,7 +35,7 @@
 
     function saved() {
       toastr.info('Project saved');
-      $state.go('projects')
+      $state.go('projects');
     }
 
   }
