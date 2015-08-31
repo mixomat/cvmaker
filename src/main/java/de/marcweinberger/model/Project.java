@@ -7,6 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 import java.time.YearMonth;
+import java.util.List;
 
 /**
  * Project entity.
@@ -23,6 +24,7 @@ public class Project {
   private String customer;
   private String sector;
   private String description;
+  private List<String> technologies;
 
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM/yyyy")
   private YearMonth start;
@@ -116,5 +118,13 @@ public class Project {
 
   public void setUpdatedAt(LocalDateTime updatedAt) {
     this.updatedAt = updatedAt;
+  }
+
+  public List<String> getTechnologies() {
+    return technologies;
+  }
+
+  public void setTechnologies(List<String> technologies) {
+    this.technologies = technologies;
   }
 }
