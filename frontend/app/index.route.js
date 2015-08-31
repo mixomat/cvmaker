@@ -12,8 +12,8 @@
         templateUrl: 'app/components/project/list/project.list.html',
         controller: 'ProjectListController as projectList'
       })
-      .state('project', {
-        url: '/projects/:projectId',
+      .state('projectEdit', {
+        url: '/projects/:projectId/edit',
         resolve: {
           project: ['$stateParams', 'Project', function ($stateParams, Project) {
             if ($stateParams.projectId) {

@@ -1,7 +1,7 @@
 <cv-navbar title="Projects"></cv-navbar>
 
 <div layout="row" layout-align="end start">
-  <md-button ui-sref="project" class="md-fab md-mini">
+  <md-button ui-sref="projectEdit" class="md-fab md-mini">
     <md-icon>add</md-icon>
   </md-button>
 </div>
@@ -30,7 +30,7 @@
       <div flex>{{project.description}}</div>
     </div>
     <div class="md-actions" layout="row" layout-align="end start">
-      <md-button class="md-icon-button" ui-sref="project({projectId: project.id})">
+      <md-button class="md-icon-button" ui-sref="projectEdit({projectId: project.id})">
         <md-icon aria-label="Edit">mode_edit</md-icon>
       </md-button>
       <md-button class="md-icon-button" ng-click="projectList.deleteProject(project)">

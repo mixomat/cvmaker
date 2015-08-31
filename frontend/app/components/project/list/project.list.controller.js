@@ -22,12 +22,13 @@
 
     function deleteProject(project) {
       $log.debug('deleting project: ', project);
-      Project.delete({projectId: project.id}).$promise.then(function () {
-        toastr.info('Project "' + project.title + '" deleted');
-        loadProjects();
-      });
+      Project.delete({projectId: project.id}).$promise.then(deleted);
     }
 
+    function deleted() {
+      toastr.info('Project deleted');
+      loadProjects();
+    }
   }
 
 })();

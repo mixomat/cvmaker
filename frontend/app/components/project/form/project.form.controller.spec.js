@@ -38,7 +38,7 @@
     it('should post a project on saving project', function () {
       ctrl.saveProject();
 
-      httpBackend.expect('POST', '/api/projects', ctrl.project).respond('201', '');
+      httpBackend.expect('POST', '/api/projects', ctrl.project).respond(201);
       expectRedirect();
       httpBackend.flush();
     });
@@ -47,7 +47,7 @@
       ctrl.project._links = {self: {href: 'http://localhost:8080/api/projects/123abc'}};
       ctrl.saveProject();
 
-      httpBackend.expect('PUT', '/api/projects/123abc', ctrl.project).respond('200', '');
+      httpBackend.expect('PUT', '/api/projects/123abc', ctrl.project).respond(200);
       expectRedirect();
       httpBackend.flush();
     });
