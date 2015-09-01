@@ -7,6 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 import java.time.YearMonth;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,7 +25,7 @@ public class Project {
   private String customer;
   private String sector;
   private String description;
-  private List<String> technologies;
+  private List<String> technologies = new ArrayList<>();
 
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM/yyyy")
   private YearMonth start;

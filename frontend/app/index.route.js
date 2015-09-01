@@ -20,7 +20,7 @@
               return Project.get({projectId: $stateParams.projectId}).$promise;
             }
             else {
-              return new Project();
+              return new Project({technologies: []});
             }
           }]
         },

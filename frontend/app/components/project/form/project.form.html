@@ -35,6 +35,12 @@
           <textarea ng-model="ctrl.project.description"/>
         </md-input-container>
       </div>
+      <div layout-padding layout="row" layout-sm="column">
+        <md-input-container flex>
+          <label>Technologies</label>
+          <md-chips ng-model="ctrl.project.technologies"></md-chips>
+        </md-input-container>
+      </div>
       <div class="md-actions" layout="row" layout-align="end start">
         <md-button type="submit" class="md-primary">Save</md-button>
         <md-button type="button" ui-sref="projects">Cancel</md-button>
