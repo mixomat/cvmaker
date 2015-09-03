@@ -9,8 +9,13 @@
   margin: 10px 60px 10px 60px;
 }
 
-md-card.selected {
-  border: 1px solid #000;
+md-card {
+  padding: 2px;
+
+  &.selected {
+    padding: 0;
+    border: 2px solid rgb(3, 169, 244);
+  }
 }
 
 /**
