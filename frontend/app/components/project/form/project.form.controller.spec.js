@@ -1,34 +1,27 @@
+/* global _:false, spyOn:false */
 (function () {
   'use strict';
 
   describe('Controller: projectForm', function () {
-    var ctrl, scope, httpBackend;
+    var ctrl, httpBackend, hotkeys;
 
     beforeEach(module('cvmaker'));
-    beforeEach(inject(function ($rootScope, $controller, _$httpBackend_, _$log_, Project) {
+    beforeEach(inject(function ($rootScope, $controller, _$httpBackend_, _hotkeys_, _$log_, Project) {
       httpBackend = _$httpBackend_;
-      scope = $rootScope.$new();
-      var ctrlBinding = {
-        project: new Project(),
-        onUpdate: function () {
-        },
-        onCancel: function () {
-        }
-      };
-      ctrl = $controller('ProjectFormController', {$scope: scope, $log: _$log_}, ctrlBinding);
+      hotkeys = _hotkeys_;
+
+      spyOn(hotkeys, 'bindTo').and.returnValue(hotkeys);
+      spyOn(hotkeys, 'add');
+
+      ctrl = $controller('ProjectFormController', {$scope: $rootScope.$new()}, {project: new Project()});
     }));
 
+    it('should set a "esc" hotkey binding for cancel', function () {
+      expect(hotkeys.add).toHaveBeenCalledWith(jasmine.objectContaining({combo: 'esc'}));
+    });
 
     it('should have a project property', function () {
       expect(ctrl.project).toBeDefined();
-    });
-
-    it('should have a onUpdate function', function () {
-      expect(ctrl.onUpdate).toBeDefined();
-    });
-
-    it('should have a onCancel function', function () {
-      expect(ctrl.onCancel).toBeDefined();
     });
 
     it('should define a saveProject function', function () {
@@ -39,8 +32,7 @@
       ctrl.saveProject();
 
       httpBackend.expect('POST', '/api/projects', ctrl.project).respond(201);
-      expectRedirect();
-      httpBackend.flush();
+      httpFlush();
     });
 
     it('should put a project when saving existing project', function () {
@@ -48,12 +40,12 @@
       ctrl.saveProject();
 
       httpBackend.expect('PUT', '/api/projects/123abc', ctrl.project).respond(200);
-      expectRedirect();
-      httpBackend.flush();
+      httpFlush();
     });
 
-    function expectRedirect() {
+    function httpFlush() {
       httpBackend.expect('GET', 'app/components/project/list/project.list.html').respond(200);
+      httpBackend.flush();
     }
 
   });

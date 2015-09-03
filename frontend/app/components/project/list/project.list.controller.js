@@ -7,11 +7,22 @@
     .controller('ProjectListController', ProjectListController);
 
   /** @ngInject */
-  function ProjectListController($log, toastr, Project) {
+  function ProjectListController($scope, $log, toastr, Project, $state, hotkeys) {
     var vm = this;
     vm.deleteProject = deleteProject;
 
+    configureHotKeys();
     loadProjects();
+
+    function configureHotKeys() {
+      hotkeys.bindTo($scope).add({
+        combo: 'c',
+        description: 'Create a new project',
+        callback: function () {
+          $state.go('projectEdit');
+        }
+      });
+    }
 
     function loadProjects() {
       Project.all(function (data) {

@@ -7,10 +7,18 @@
     .controller('ProjectFormController', ProjectFormController);
 
   /** @ngInject */
-  function ProjectFormController($log, $state, toastr, Project) {
+  function ProjectFormController($scope, $log, $state, toastr, Project, hotkeys) {
     var vm = this, selfLinkPath = '_links.self.href';
     vm.saveProject = saveProject;
 
+    configureHotKeys();
+    function configureHotKeys() {
+      hotkeys.bindTo($scope).add({
+        combo: 'esc',
+        description: 'Cancel project edit',
+        callback: goToProjectList
+      });
+    }
 
     function saveProject() {
       if (hasId()) {
@@ -35,6 +43,10 @@
 
     function saved() {
       toastr.info('Project saved');
+      goToProjectList();
+    }
+
+    function goToProjectList() {
       $state.go('projects');
     }
 
