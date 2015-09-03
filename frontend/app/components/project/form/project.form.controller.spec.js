@@ -17,7 +17,10 @@
     }));
 
     it('should set a "esc" hotkey binding for cancel', function () {
-      expect(hotkeys.add).toHaveBeenCalledWith(jasmine.objectContaining({combo: 'esc'}));
+      expect(hotkeys.add).toHaveBeenCalledWith(jasmine.objectContaining({
+        combo: 'esc',
+        allowIn: ['INPUT', 'SELECT', 'TEXTAREA']
+      }));
     });
 
     it('should have a project property', function () {

@@ -16,7 +16,8 @@
       hotkeys.bindTo($scope).add({
         combo: 'esc',
         description: 'Cancel project edit',
-        callback: goToProjectList
+        callback: goToProjectList,
+        allowIn: ['INPUT', 'SELECT', 'TEXTAREA']
       });
     }
 
