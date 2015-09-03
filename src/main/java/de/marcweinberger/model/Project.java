@@ -22,9 +22,10 @@ public class Project {
   private String id;
   private String title;
   private String role;
-  private String customer;
+  private String client;
   private String sector;
   private String description;
+  private Integer hourlyRate;
   private List<String> technologies = new ArrayList<>();
 
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM/yyyy")
@@ -49,12 +50,12 @@ public class Project {
     this.createdAt = createdAt;
   }
 
-  public String getCustomer() {
-    return customer;
+  public String getClient() {
+    return client;
   }
 
-  public void setCustomer(String customer) {
-    this.customer = customer;
+  public void setClient(String client) {
+    this.client = client;
   }
 
   public String getDescription() {
@@ -127,5 +128,13 @@ public class Project {
 
   public void setTechnologies(List<String> technologies) {
     this.technologies = technologies;
+  }
+
+  public Integer getHourlyRate() {
+    return hourlyRate;
+  }
+
+  public void setHourlyRate(Integer hourlyRate) {
+    this.hourlyRate = hourlyRate;
   }
 }
