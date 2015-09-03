@@ -1,4 +1,4 @@
-/* global _:false, spyOn:false */
+///* global spyOn:false */
 (function () {
   'use strict';
 
@@ -11,7 +11,7 @@
       hotkeys = _hotkeys_;
 
       spyOn(hotkeys, 'bindTo').and.returnValue(hotkeys);
-      spyOn(hotkeys, 'add');
+      spyOn(hotkeys, 'add').and.returnValue(hotkeys);
 
       ctrl = $controller('ProjectFormController', {$scope: $rootScope.$new()}, {project: new Project()});
     }));

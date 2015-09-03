@@ -6,45 +6,48 @@
   </md-button>
 </div>
 
-<md-card ng-repeat="project in projectList.projects">
-  <md-card-content>
-    <h2 class="md-headline">{{project.title}} <span class="md-subhead">({{project.start}} - {{project.end}})</span></h2>
+<div ng-repeat="project in projectList.projects">
+  <md-card id="project-{{$index}}" ng-class="projectList.isSelectedProject($index) ? 'selected' : ''">
+    <md-card-content>
+      <h2 class="md-headline">{{project.title}} <span class="md-subhead">({{project.start}} - {{project.end}})</span>
+      </h2>
 
-    <div layout="row" layout-fill>
-      <div layout="column" flex="25" layout-fill>
-        <div flex class="md-caption">Role</div>
-        <div flex>{{project.role}}</div>
+      <div layout="row" layout-fill>
+        <div layout="column" flex="25" layout-fill>
+          <div flex class="md-caption">Role</div>
+          <div flex>{{project.role}}</div>
+        </div>
+        <div layout="column" flex="25" layout-fill>
+          <div flex class="md-caption">Client</div>
+          <div flex>{{project.client}}</div>
+        </div>
+        <div layout="column" flex="25" layout-fill>
+          <div flex class="md-caption">Sector</div>
+          <div flex>{{project.sector}}</div>
+        </div>
+        <div layout="column" flex="25" layout-fill>
+          <div flex class="md-caption">Hourly Rate</div>
+          <div flex>{{project.hourlyRate}}</div>
+        </div>
       </div>
-      <div layout="column" flex="25" layout-fill>
-        <div flex class="md-caption">Client</div>
-        <div flex>{{project.client}}</div>
+      <div layout="column">
+        <div flex>&nbsp;</div>
+        <div flex class="md-caption">Description</div>
+        <div flex>{{project.description}}</div>
       </div>
-      <div layout="column" flex="25" layout-fill>
-        <div flex class="md-caption">Sector</div>
-        <div flex>{{project.sector}}</div>
+      <div layout="column">
+        <div flex>&nbsp;</div>
+        <div flex class="md-caption">Technologies</div>
+        <md-chips ng-model="project.technologies" readonly="true" flex></md-chips>
       </div>
-      <div layout="column" flex="25" layout-fill>
-        <div flex class="md-caption">Hourly Rate</div>
-        <div flex>{{project.hourlyRate}}</div>
+      <div class="md-actions" layout="row" layout-align="end start">
+        <md-button class="md-icon-button" ui-sref="projectEdit({projectId: project.id})">
+          <md-icon aria-label="Edit">mode_edit</md-icon>
+        </md-button>
+        <md-button class="md-icon-button" ng-click="projectList.deleteProject(project)">
+          <md-icon aria-label="Delete">delete</md-icon>
+        </md-button>
       </div>
-    </div>
-    <div layout="column">
-      <div flex>&nbsp;</div>
-      <div flex class="md-caption">Description</div>
-      <div flex>{{project.description}}</div>
-    </div>
-    <div layout="column">
-      <div flex>&nbsp;</div>
-      <div flex class="md-caption">Technologies</div>
-      <md-chips ng-model="project.technologies" readonly="true" flex></md-chips>
-    </div>
-    <div class="md-actions" layout="row" layout-align="end start">
-      <md-button class="md-icon-button" ui-sref="projectEdit({projectId: project.id})">
-        <md-icon aria-label="Edit">mode_edit</md-icon>
-      </md-button>
-      <md-button class="md-icon-button" ng-click="projectList.deleteProject(project)">
-        <md-icon aria-label="Delete">delete</md-icon>
-      </md-button>
-    </div>
-  </md-card-content>
-</md-card>
+    </md-card-content>
+  </md-card>
+</div>
