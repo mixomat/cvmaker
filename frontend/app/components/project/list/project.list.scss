@@ -5,8 +5,12 @@
 // bower:scss
 // endbower
 
+.project-card {
+  margin: 10px 60px 10px 60px;
+}
+
 md-card.selected {
-  border: 1px solid $md-hue-1;
+  border: 1px solid #000;
 }
 
 /**
