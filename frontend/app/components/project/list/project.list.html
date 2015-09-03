@@ -1,4 +1,4 @@
-<cv-navbar title="Projects"></cv-navbar>
+<cv-navbar id="navbar" title="Projects"></cv-navbar>
 
 <div layout="row" layout-align="end start">
   <md-button ui-sref="projectEdit" class="md-fab md-mini">
@@ -7,7 +7,8 @@
 </div>
 
 <div ng-repeat="project in projectList.projects">
-  <md-card id="project-{{$index}}" ng-class="projectList.isSelectedProject($index) ? 'selected' : ''">
+  <md-card id="project-{{$index}}" ng-class="projectList.isSelectedProject($index) ? 'selected' : ''"
+           class="project-card">
     <md-card-content>
       <h2 class="md-headline">{{project.title}} <span class="md-subhead">({{project.start}} - {{project.end}})</span>
       </h2>

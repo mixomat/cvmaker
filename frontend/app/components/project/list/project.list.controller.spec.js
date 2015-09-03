@@ -55,13 +55,19 @@
       expect(projectList.isSelectedProject).toBeDefined();
     });
 
-    it('should set the selectedProject to 0 on selectNextProject', function () {
-      projectList.selectNextProject();
-      expect(projectList.isSelectedProject(0)).toBeTruthy();
+    it('should set the selectedProject to -1 on selectPreviousProject', function () {
+      projectList.selectPreviousProject();
+      expect(projectList.isSelectedProject(-1)).toBeTruthy();
     });
 
-    it('should set the selectedProject to 0 on selectPreviousProject', function () {
+    it('should set the selectedProject to -1 on two invocations of selectPreviousProject', function () {
       projectList.selectPreviousProject();
+      projectList.selectPreviousProject();
+      expect(projectList.isSelectedProject(-1)).toBeTruthy();
+    });
+
+    it('should set the selectedProject to 0 on selectNextProject', function () {
+      projectList.selectNextProject();
       expect(projectList.isSelectedProject(0)).toBeTruthy();
     });
 

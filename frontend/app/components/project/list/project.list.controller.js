@@ -66,12 +66,17 @@
     }
 
     function selectPreviousProject() {
-      selectedProjectIndex = Math.max(--selectedProjectIndex, 0);
+      selectedProjectIndex = Math.max(--selectedProjectIndex, -1);
       scrollToProject(selectedProjectIndex);
     }
 
     function scrollToProject(index) {
-      $anchorScroll('project-' + index);
+      if (index === -1) {
+        $anchorScroll('navbar');
+      }
+      else {
+        $anchorScroll('project-' + index);
+      }
     }
 
     function isSelectedProject(index) {
