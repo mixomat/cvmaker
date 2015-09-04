@@ -22,16 +22,11 @@
         .add({
           combo: 'c',
           description: 'Create a new project',
-          callback: function () {
-            $state.go('projectEdit');
-          }
+          callback: createNewProject
         }).add({
           combo: 'e',
           description: 'Edit selected project',
-          callback: function () {
-            var projectId = vm.projects[selectedProjectIndex].id;
-            $state.go('projectEdit', {projectId: projectId});
-          }
+          callback: editSelectedProject
         }).add({
           combo: 'j',
           description: 'Select next project',
@@ -41,23 +36,6 @@
           description: 'Select previous project',
           callback: selectPreviousProject
         });
-    }
-
-    function loadProjects() {
-      Project.all(function (data) {
-        vm.projects = _.get(data, '_embedded.projects', []);
-        $log.debug('loaded projects: ', vm.projects);
-      });
-    }
-
-    function deleteProject(project) {
-      $log.debug('deleting project: ', project);
-      Project.delete({projectId: project.id}).$promise.then(deleted);
-    }
-
-    function deleted() {
-      toastr.info('Project deleted');
-      loadProjects();
     }
 
     function selectNextProject() {
@@ -82,6 +60,35 @@
     function isSelectedProject(index) {
       return selectedProjectIndex === index;
     }
+
+    function createNewProject() {
+      $state.go('projectEdit');
+    }
+
+    function editSelectedProject() {
+      if (selectedProjectIndex > -1) {
+        var projectId = vm.projects[selectedProjectIndex].id;
+        $state.go('projectEdit', {projectId: projectId});
+      }
+    }
+
+    function loadProjects() {
+      Project.all(function (data) {
+        vm.projects = _.get(data, '_embedded.projects', []);
+        $log.debug('loaded projects: ', vm.projects);
+      });
+    }
+
+    function deleteProject(project) {
+      $log.debug('deleting project: ', project);
+      Project.delete({projectId: project.id}).$promise.then(deleted);
+    }
+
+    function deleted() {
+      toastr.info('Project deleted');
+      loadProjects();
+    }
+
   }
 
 })();
