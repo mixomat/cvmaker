@@ -40,6 +40,7 @@ public class OAuth2SecurityConfig {
     }
   }
 
+  @SuppressWarnings("SpringJavaAutowiringInspection")
   @Configuration
   @EnableAuthorizationServer
   protected static class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
