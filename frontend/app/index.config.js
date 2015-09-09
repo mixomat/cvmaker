@@ -6,7 +6,7 @@
     .config(config);
 
   /** @ngInject */
-  function config($logProvider, $mdThemingProvider, toastr) {
+  function config($logProvider, $mdThemingProvider, toastr, $authProvider) {
     // Enable log
     $logProvider.debugEnabled(true);
 
@@ -17,6 +17,12 @@
     toastr.options.timeOut = 3000;
     toastr.options.positionClass = 'toast-top-right';
     toastr.options.preventDuplicates = true;
+
+    // oauth config
+    $authProvider.tokenPrefix = "cvmaker";
+    $authProvider.github({
+      clientId: '8982f8b1340689811709'
+    });
   }
 
 })();
