@@ -19,7 +19,10 @@
     toastr.options.preventDuplicates = true;
 
     // oauth config
-    $authProvider.tokenPrefix = "cvmaker";
+    $authProvider.withCredentials = false;
+    $authProvider.tokenPrefix = 'cvmaker';
+    $authProvider.baseUrl = 'http://localhost:8080/';
+
     $authProvider.github({
       clientId: '8982f8b1340689811709'
     });
