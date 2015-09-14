@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Map;
 
 /**
- * TODO document me
+ * Simple controller for authorization of github login.
  *
  * @author Marc Weinberger, marc.weinberger@me.com
  * @since 09.09.15
@@ -19,8 +19,8 @@ import java.util.Map;
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
-  @Autowired
 
+  @Autowired
   private AuthService authService;
 
   @RequestMapping(method = RequestMethod.POST, value = "github")

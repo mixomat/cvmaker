@@ -21,7 +21,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * Business service for authentication with 3rd party auth providers (like Github).
@@ -45,14 +44,14 @@ public class AuthService {
   @Autowired
   private OAuth2ClientProperties clientProperties;
 
+  @Transactional
   public OAuth2AccessToken authorizeGithubUser(String authorizationCode, String redirectURI) {
     logger.info("starting github authorization with authCode: {}, redirectUri: {}", authorizationCode, redirectURI);
     enhanceOAuth2ClientContext(authorizationCode, redirectURI);
 
-    final String githubUserEmail = getGithubUserEmail();
-    final User user = getUser(githubUserEmail);
+    final User user = getUser(getGithubUserEmail());
 
-    return createAccessToken(githubUserEmail, user);
+    return createAccessToken(user);
   }
 
   private void enhanceOAuth2ClientContext(String authorizationCode, String redirectURI) {
@@ -67,21 +66,19 @@ public class AuthService {
     return githubAuthGateway.getGithubEmail();
   }
 
-  @Transactional
-  private User getUser(String githubUserEmail) {
+  private User getUser(String email) {
     // lookup user or create user
-    final Optional<User> optionalUser = userRepository.findByEmail(githubUserEmail);
-    return optionalUser.orElseGet(() -> {
-      logger.info("creating user for email: {}", githubUserEmail);
-      return userRepository.save(new User(githubUserEmail));
+    return userRepository.findByEmail(email).orElseGet(() -> {
+      logger.info("creating user for email: {}", email);
+      return userRepository.save(new User(email));
     });
   }
 
-  private OAuth2AccessToken createAccessToken(String githubUserEmail, User user) {
+  private OAuth2AccessToken createAccessToken(User user) {
     logger.info("creating token for user: {}", user);
     final List<GrantedAuthority> authorities = AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_USER");
     final OAuth2Request request = new OAuth2Request(null, clientProperties.getClientId(), null, true, null, null, null, null, null);
-    final OAuth2Authentication oAuth2Authentication = new OAuth2Authentication(request, new UsernamePasswordAuthenticationToken(githubUserEmail, "N/A", authorities));
+    final OAuth2Authentication oAuth2Authentication = new OAuth2Authentication(request, new UsernamePasswordAuthenticationToken(user.getEmail(), "N/A", authorities));
 
     return authorizationServerTokenServices.createAccessToken(oAuth2Authentication);
   }

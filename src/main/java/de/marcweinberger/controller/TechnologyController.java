@@ -22,7 +22,6 @@ public class TechnologyController {
   @Autowired
   private TechnologyRepository technologyRepository;
 
-
   @RequestMapping(method = RequestMethod.GET, value = "technologies")
   @ResponseBody
   public List<Technology> all() {

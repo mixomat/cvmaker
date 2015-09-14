@@ -45,6 +45,9 @@ public class OAuth2SecurityConfig {
   @Configuration
   @EnableAuthorizationServer
   protected static class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
+    // TODO configure in application properties / keystore as RSA key
+    private static final String SIGNING_KEY = "24D77EF984709253A926763A057AFDF26BD766497D277C83659B4366354BBD8B";
+    private static final String VERIFIER_KEY = SIGNING_KEY;
 
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -59,8 +62,11 @@ public class OAuth2SecurityConfig {
 
     @Bean
     public JwtAccessTokenConverter tokenEnhancer() {
-      // TODO configure key and verify
-      return new JwtAccessTokenConverter();
+      final JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
+      converter.setSigningKey(SIGNING_KEY);
+      converter.setVerifierKey(VERIFIER_KEY);
+
+      return converter;
     }
 
     @Override
