@@ -10,7 +10,10 @@
       .state('login', {
         url: '/login',
         templateUrl: 'app/components/login/login.html',
-        controller: 'LoginController as login'
+        controller: 'LoginController as login',
+        resolve: {
+          skipIfLoggedIn: skipIfLoggedIn
+        }
       })
       .state('projects', {
         url: '/projects',
@@ -38,6 +41,16 @@
       });
 
     $urlRouterProvider.otherwise("/projects");
+  }
+
+  function skipIfLoggedIn($q, $location, $auth) {
+    var deferred = $q.defer();
+    if ($auth.isAuthenticated()) {
+      $location.path('/');
+    } else {
+      deferred.resolve();
+    }
+    return deferred.promise;
   }
 
   function loginRequired($q, $location, $auth) {
