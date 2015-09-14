@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.Arrays;
 
 /**
- * Business Service for github authentication.
+ * Infrastructure Service for github authentication.
  *
  * @author Marc Weinberger, marc.weinberger@me.com
  * @since 12.09.15

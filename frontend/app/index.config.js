@@ -21,6 +21,7 @@
     // oauth config
     $authProvider.withCredentials = false;
     $authProvider.tokenPrefix = 'cvmaker';
+    $authProvider.tokenName = 'access_token';
     $authProvider.baseUrl = 'http://localhost:8080/';
 
     $authProvider.github({
