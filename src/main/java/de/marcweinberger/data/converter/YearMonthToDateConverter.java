@@ -1,4 +1,4 @@
-package de.marcweinberger.converter;
+package de.marcweinberger.data.converter;
 
 import org.springframework.core.convert.converter.Converter;
 

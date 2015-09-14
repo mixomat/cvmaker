@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.convert.CustomConversions;
+import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
@@ -18,9 +19,11 @@ public class CVMakerAppTest extends CVMakerIntegrationTest {
   @Autowired
   private CustomConversions customerConversion;
 
+  @Autowired
+  private OAuth2RestTemplate gitHubRestTemplate;
+
   @Value("${security.user.name}")
   private String username;
-
   @Value("${security.user.password}")
   private String password;
 
@@ -43,5 +46,10 @@ public class CVMakerAppTest extends CVMakerIntegrationTest {
   @Test
   public void customConversions() throws Exception {
     assertThat(customerConversion, is(notNullValue()));
+  }
+
+  @Test
+  public void gitHubRestTemplate() throws Exception {
+    assertThat(gitHubRestTemplate, is(notNullValue()));
   }
 }

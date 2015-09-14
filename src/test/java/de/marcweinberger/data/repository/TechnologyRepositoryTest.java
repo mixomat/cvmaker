@@ -1,4 +1,4 @@
-package de.marcweinberger.repository;
+package de.marcweinberger.data.repository;
 
 import de.marcweinberger.CVMakerIntegrationTest;
 import de.marcweinberger.model.Project;

@@ -1,4 +1,4 @@
-package de.marcweinberger.converter;
+package de.marcweinberger.data.converter;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;

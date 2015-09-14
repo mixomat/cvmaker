@@ -1,7 +1,7 @@
 package de.marcweinberger.config;
 
-import de.marcweinberger.converter.DateToYearMonthConverter;
-import de.marcweinberger.converter.YearMonthToDateConverter;
+import de.marcweinberger.data.converter.DateToYearMonthConverter;
+import de.marcweinberger.data.converter.YearMonthToDateConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.config.EnableMongoAuditing;
