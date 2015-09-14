@@ -6,9 +6,10 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import java.util.Optional;
 
-import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
 /**
@@ -23,12 +24,10 @@ public class UserRepositoryTest extends CVMakerIntegrationTest {
   @Autowired
   private UserRepository userRepository;
 
-  final User user = new User("test@example.com");
-
   @Test
   public void save() throws Exception {
     // when
-    final User savedUser = userRepository.save(user);
+    final User savedUser = userRepository.save(new User("foo@example.com"));
 
     // then
     assertThat(savedUser.getId(), is(notNullValue()));
@@ -37,11 +36,25 @@ public class UserRepositoryTest extends CVMakerIntegrationTest {
   @Test
   public void findByEmail() throws Exception {
     // given
-    final User savedUser = userRepository.save(user);
+    final String email = "test@example.com";
+    final User savedUser = userRepository.save(new User(email));
 
     // when
-    final List<User> users = userRepository.findByEmail("test@example.com");
+    final Optional<User> user = userRepository.findByEmail(email);
 
-    assertThat(users, hasItem(savedUser));
+    assertThat(user.isPresent(), is(true));
+    assertThat(user.get(), is(savedUser));
+  }
+
+  @Test
+  public void findByEmailNotFound() throws Exception {
+    // given
+    final User savedUser = userRepository.save(new User("foo@example.com"));
+
+    // when
+    final Optional<User> user = userRepository.findByEmail("bar@example.com");
+
+    assertThat(user.isPresent(), is(true));
+    assertThat(user.get(), is(savedUser));
   }
 }
