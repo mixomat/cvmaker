@@ -36,6 +36,7 @@ public class OAuth2SecurityConfig {
       http.authorizeRequests()
         .antMatchers(HttpMethod.GET, "/api/projects").permitAll()
         .antMatchers(HttpMethod.GET, "/api/technologies").permitAll()
+        .antMatchers("/auth/*").permitAll()
         .anyRequest().authenticated();
     }
   }
@@ -68,7 +69,7 @@ public class OAuth2SecurityConfig {
         .inMemory()
         .withClient(clientProperties.getClientId())
         .secret(clientProperties.getClientSecret())
-        .authorizedGrantTypes("password", "refresh_token")
+        .authorizedGrantTypes("password", "refresh_token", "authorization_code")
         .scopes("read", "write")
         .authorities("ROLE_USER");
     }
