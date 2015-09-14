@@ -1,8 +1,8 @@
 package de.marcweinberger.resource;
 
 import de.marcweinberger.CVMakerIntegrationTest;
+import de.marcweinberger.data.repository.ProjectRepository;
 import de.marcweinberger.model.Project;
-import de.marcweinberger.repository.ProjectRepository;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

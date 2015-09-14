@@ -1,4 +1,4 @@
-package de.marcweinberger.repository;
+package de.marcweinberger.data.repository;
 
 import de.marcweinberger.model.Technology;
 import org.springframework.beans.factory.annotation.Autowired;
