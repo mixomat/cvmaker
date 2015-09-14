@@ -27,6 +27,21 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 @Configuration
 public class OAuth2SecurityConfig {
 
+  @Bean
+  @Primary
+  public TokenStore tokenStore() {
+    return new JwtTokenStore(tokenEnhancer());
+  }
+
+  @Bean
+  public JwtAccessTokenConverter tokenEnhancer() {
+    final JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
+    // TODO configure in application properties / keystore as RSA key
+    converter.setSigningKey("24D77EF984709253A926763A057AFDF26BD766497D277C83659B4366354BBD8B");
+
+    return converter;
+  }
+
   @Configuration
   @EnableResourceServer
   protected static class ResourceServerConfig extends ResourceServerConfigurerAdapter {
@@ -45,29 +60,15 @@ public class OAuth2SecurityConfig {
   @Configuration
   @EnableAuthorizationServer
   protected static class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
-    // TODO configure in application properties / keystore as RSA key
-    private static final String SIGNING_KEY = "24D77EF984709253A926763A057AFDF26BD766497D277C83659B4366354BBD8B";
-    private static final String VERIFIER_KEY = SIGNING_KEY;
 
     @Autowired
     private AuthenticationManager authenticationManager;
     @Autowired
     private OAuth2ClientProperties clientProperties;
-
-    @Bean
-    @Primary
-    public TokenStore tokenStore() {
-      return new JwtTokenStore(tokenEnhancer());
-    }
-
-    @Bean
-    public JwtAccessTokenConverter tokenEnhancer() {
-      final JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-      converter.setSigningKey(SIGNING_KEY);
-      converter.setVerifierKey(VERIFIER_KEY);
-
-      return converter;
-    }
+    @Autowired
+    private TokenStore tokenStore;
+    @Autowired
+    private JwtAccessTokenConverter tokenConverter;
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
@@ -83,8 +84,8 @@ public class OAuth2SecurityConfig {
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
       endpoints
-        .tokenStore(tokenStore())
-        .tokenEnhancer(tokenEnhancer())
+        .tokenStore(tokenStore)
+        .tokenEnhancer(tokenConverter)
         .authenticationManager(authenticationManager);
     }
   }
