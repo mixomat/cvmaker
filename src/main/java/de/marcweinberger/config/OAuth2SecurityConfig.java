@@ -1,6 +1,7 @@
 package de.marcweinberger.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.security.oauth2.OAuth2ClientProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,6 +28,9 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 @Configuration
 public class OAuth2SecurityConfig {
 
+  @Value("${security.oauth2.resource.jwt.key-value}")
+  private String jwtKey;
+
   @Bean
   @Primary
   public TokenStore tokenStore() {
@@ -36,8 +40,7 @@ public class OAuth2SecurityConfig {
   @Bean
   public JwtAccessTokenConverter tokenEnhancer() {
     final JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-    // TODO configure in application properties / keystore as RSA key
-    converter.setSigningKey("24D77EF984709253A926763A057AFDF26BD766497D277C83659B4366354BBD8B");
+    converter.setSigningKey(jwtKey);
 
     return converter;
   }
