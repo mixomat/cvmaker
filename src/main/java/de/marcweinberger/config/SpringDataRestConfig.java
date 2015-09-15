@@ -1,6 +1,6 @@
 package de.marcweinberger.config;
 
-import de.marcweinberger.model.Project;
+import de.marcweinberger.domain.model.Project;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

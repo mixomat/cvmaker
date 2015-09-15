@@ -1,7 +1,7 @@
 package de.marcweinberger.data.repository;
 
 import de.marcweinberger.CVMakerIntegrationTest;
-import de.marcweinberger.model.User;
+import de.marcweinberger.domain.model.User;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;

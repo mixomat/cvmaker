@@ -1,6 +1,6 @@
 package de.marcweinberger.data.repository;
 
-import de.marcweinberger.model.Technology;
+import de.marcweinberger.domain.model.Technology;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;

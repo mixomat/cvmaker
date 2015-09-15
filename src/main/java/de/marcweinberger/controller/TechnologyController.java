@@ -1,7 +1,7 @@
 package de.marcweinberger.controller;
 
 import de.marcweinberger.data.repository.TechnologyRepository;
-import de.marcweinberger.model.Technology;
+import de.marcweinberger.domain.model.Technology;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.BasePathAwareController;
 import org.springframework.web.bind.annotation.RequestMapping;

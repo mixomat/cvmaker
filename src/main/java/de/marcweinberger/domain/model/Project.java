@@ -1,4 +1,4 @@
-package de.marcweinberger.model;
+package de.marcweinberger.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.data.annotation.CreatedDate;

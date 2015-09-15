@@ -1,4 +1,4 @@
-package de.marcweinberger.model;
+package de.marcweinberger.domain.model;
 
 /**
  * Technology value object.

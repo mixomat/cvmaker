@@ -1,7 +1,7 @@
 package de.marcweinberger.data.repository;
 
 import de.marcweinberger.CVMakerIntegrationTest;
-import de.marcweinberger.model.Project;
+import de.marcweinberger.domain.model.Project;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

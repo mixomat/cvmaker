@@ -2,7 +2,7 @@ package de.marcweinberger.data.converter;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
-import de.marcweinberger.model.Project;
+import de.marcweinberger.domain.model.Project;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
