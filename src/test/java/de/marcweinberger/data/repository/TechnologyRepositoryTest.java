@@ -36,7 +36,7 @@ public class TechnologyRepositoryTest extends CVMakerIntegrationTest {
     createProject(Arrays.asList("Java", "Ruby"));
 
     // when
-    final List<Technology> technologies = technologyRepository.all();
+    final Iterable<Technology> technologies = technologyRepository.all();
 
     // then
     assertThat(technologies, hasItems(new Technology("Java", 2), new Technology("Ruby", 1)));

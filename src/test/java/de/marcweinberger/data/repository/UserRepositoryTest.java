@@ -42,6 +42,7 @@ public class UserRepositoryTest extends CVMakerIntegrationTest {
     // when
     final Optional<User> user = userRepository.findByEmail(email);
 
+    // then
     assertThat(user.isPresent(), is(true));
     assertThat(user.get(), is(savedUser));
   }
@@ -49,12 +50,12 @@ public class UserRepositoryTest extends CVMakerIntegrationTest {
   @Test
   public void findByEmailNotFound() throws Exception {
     // given
-    final User savedUser = userRepository.save(new User("foo@example.com"));
+    userRepository.save(new User("foo@example.com"));
 
     // when
     final Optional<User> user = userRepository.findByEmail("bar@example.com");
 
-    assertThat(user.isPresent(), is(true));
-    assertThat(user.get(), is(savedUser));
+    // then
+    assertThat(user.isPresent(), is(false));
   }
 }
