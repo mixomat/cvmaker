@@ -1,6 +1,9 @@
 # CVmaker
-
+[![Build Status](https://travis-ci.org/marcopotento/cvmaker.svg)](https://travis-ci.org/marcopotento/cvmaker)
 CV Management / Generator / Exporter app.
+
+## Introduction
+...
 
 ## Backend
 Spring Boot based java app. Currently only project resources can be managed. 
