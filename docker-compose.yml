@@ -1,0 +1,14 @@
+backend:
+  build: .
+  environment:
+    - SPRING_DATA_MONGODB_HOST=mongo
+  ports:
+    - "8080:8080"
+  links:
+    - mongo
+mongo:
+  image: mongo:2.6
+  expose:
+    - "27017"
+  ports:
+    - "27017:27017"
