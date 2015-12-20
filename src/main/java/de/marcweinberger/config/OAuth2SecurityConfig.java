@@ -54,8 +54,7 @@ public class OAuth2SecurityConfig {
       http.authorizeRequests()
         .antMatchers(HttpMethod.GET, "/api/projects").permitAll()
         .antMatchers(HttpMethod.GET, "/api/technologies").permitAll()
-        .antMatchers("/auth/*").permitAll()
-        .anyRequest().authenticated();
+        .antMatchers("/api/**").authenticated();
     }
   }
 
