@@ -114,6 +114,12 @@
             </goals>
           </execution>
           <execution>
+            <id>bower install</id>
+            <goals>
+              <goal>bower</goal>
+            </goals>
+          </execution>
+          <execution>
             <id>gulp build</id>
             <goals>
               <goal>gulp</goal>
