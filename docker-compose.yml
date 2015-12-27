@@ -1,4 +1,4 @@
-backend:
+app:
   build: .
   environment:
     - SPRING_DATA_MONGODB_HOST=mongo
@@ -6,9 +6,16 @@ backend:
     - "8080:8080"
   links:
     - mongo
+  volumes_from:
+    - data
 mongo:
   image: mongo:2.6
   expose:
     - "27017"
   ports:
     - "27017:27017"
+  volumes_from:
+    - data
+data:
+  image: mongo:2.6
+  command: /bin/true
