@@ -20,6 +20,7 @@ import java.time.YearMonth;
 import java.time.ZoneId;
 import java.util.Arrays;
 
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -64,7 +65,7 @@ public class YearMonthConversionTest {
 
     // then
     assertThat(dbo.get("title"), is("test title"));
-    assertThat(dbo.get("start").toString(), is("Mon Feb 01 01:00:00 CET 2010"));
+    assertThat(dbo.get("start").toString(), containsString("Mon Feb 01"));
     assertThat(dbo.get("createdAt"), is(Date.from(now.atZone(ZoneId.systemDefault()).toInstant())));
   }
 

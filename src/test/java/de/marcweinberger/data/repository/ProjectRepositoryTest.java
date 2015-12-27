@@ -13,7 +13,6 @@ import java.util.List;
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasProperty;
-import static org.hamcrest.Matchers.hasSize;
 
 /**
  * Test cases for ProjectRepository.
@@ -55,7 +54,6 @@ public class ProjectRepositoryTest extends CVMakerIntegrationTest {
     final List<Project> projects = projectRepository.findAll();
 
     // then
-    assertThat(projects, hasSize(1));
     assertThat(projects, hasItem(hasProperty("id")));
   }
 }
