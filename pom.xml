@@ -120,6 +120,12 @@
             </goals>
           </execution>
           <execution>
+            <id>karma tests</id>
+            <goals>
+              <goal>karma</goal>
+            </goals>
+          </execution>
+          <execution>
             <id>gulp build</id>
             <goals>
               <goal>gulp</goal>
