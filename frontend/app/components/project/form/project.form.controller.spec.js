@@ -35,7 +35,7 @@
       ctrl.saveProject();
 
       httpBackend.expect('POST', '/api/projects', ctrl.project).respond(201);
-      httpFlush();
+      httpBackend.flush();
     });
 
     it('should put a project when saving existing project', function () {
@@ -43,13 +43,8 @@
       ctrl.saveProject();
 
       httpBackend.expect('PUT', '/api/projects/123abc', ctrl.project).respond(200);
-      httpFlush();
-    });
-
-    function httpFlush() {
-      httpBackend.expect('GET', 'app/components/project/list/project.list.html').respond(200);
       httpBackend.flush();
-    }
+    });
 
   });
 })();
