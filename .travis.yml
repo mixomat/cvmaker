@@ -1,8 +1,14 @@
-sudo: false
+sudo: required
+
+services:
+  - docker
 
 language: java
 jdk:
   - oraclejdk8
+
+after_script:
+  - docker-compose build
 
 env:
   - CXX=g++-4.8
