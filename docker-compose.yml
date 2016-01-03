@@ -19,3 +19,5 @@ mongo:
 data:
   image: mongo:2.6
   command: /bin/true
+  volumes:
+    - "/data:/data"
