@@ -17,7 +17,7 @@ mongo:
   volumes_from:
     - data
 data:
-  image: mongo:2.6
+  image: busybox
   command: /bin/true
   volumes:
     - "/data:/data"
