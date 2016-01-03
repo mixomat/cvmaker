@@ -9,4 +9,6 @@ jdk:
 
 after_script:
   - docker-compose build
+  - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
   - docker tag cvmaker_app:latest marcopotento/cvmaker_app:latest
+  - docker push marcopotento/cvmaker_app
