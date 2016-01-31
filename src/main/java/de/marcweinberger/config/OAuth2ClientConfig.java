@@ -39,8 +39,11 @@ public class OAuth2ClientConfig {
 
   @Bean
   public OAuth2RestTemplate githubRestTemplate(OAuth2ClientContext clientContext) {
+    final AuthorizationCodeAccessTokenProvider accessTokenProvider = new AuthorizationCodeAccessTokenProvider();
+    accessTokenProvider.setStateMandatory(false);
+
     final OAuth2RestTemplate githubRestTemplate = new OAuth2RestTemplate(github(), clientContext);
-    githubRestTemplate.setAccessTokenProvider(new AuthorizationCodeAccessTokenProvider());
+    githubRestTemplate.setAccessTokenProvider(accessTokenProvider);
 
     return githubRestTemplate;
   }

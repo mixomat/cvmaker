@@ -51,10 +51,12 @@ public class OAuth2SecurityConfig {
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
-      http.authorizeRequests()
+      http.csrf().disable()
+        .authorizeRequests()
         .antMatchers(HttpMethod.GET, "/api/projects").permitAll()
         .antMatchers(HttpMethod.GET, "/api/technologies").permitAll()
         .antMatchers("/api/**").authenticated();
+
     }
   }
 
