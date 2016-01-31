@@ -74,7 +74,7 @@
 
     function loadProjects() {
       Project.all(function (data) {
-        vm.projects = _.get(data, '_embedded.projects', []);
+        vm.projects = _.get(data, 'content', []);
         $log.debug('loaded projects: ', vm.projects);
       });
     }
