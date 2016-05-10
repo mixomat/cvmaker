@@ -7,17 +7,13 @@ app:
   links:
     - mongo
   volumes_from:
-    - data
+    - mongo
 mongo:
   image: mongo:3.2
   expose:
     - "27017"
   ports:
     - "27017:27017"
-  volumes_from:
-    - data
-data:
-  image: busybox
-  command: /bin/true
   volumes:
-    - "/Users/marc/projects/docker/data/mongo:/data"
+      -  ~/projects/docker/data/mongo/db:/data/db
+      -  ~/projects/docker/data/mongo/configdb:/data/configdb
