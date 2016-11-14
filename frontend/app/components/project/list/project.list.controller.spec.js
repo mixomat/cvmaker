@@ -23,7 +23,9 @@
 
     function httpBackendBehavior() {
       httpBackend.when('GET', '/api/projects?sort=start,desc').respond({
-        content: [{id: 1}, {id: 2}]
+        _embedded: {
+          projects: [{id: 1}, {id: 2}]
+        }
       });
       httpBackend.flush();
     }
