@@ -3,15 +3,13 @@ app:
   environment:
     - SPRING_DATA_MONGODB_HOST=mongo
   ports:
-    - "8080:8080"
+    - "8888:8080"
   links:
     - mongo
   volumes_from:
     - mongo
 mongo:
   image: mongo:3.2
-  expose:
-    - "27017"
   ports:
     - "27017:27017"
   volumes:
