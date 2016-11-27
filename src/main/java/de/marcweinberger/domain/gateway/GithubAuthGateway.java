@@ -23,7 +23,7 @@ public class GithubAuthGateway {
 
   public String getGithubEmail() {
     final GithubEmail[] githubEmails = githubRestTemplate.getForObject("https://api.github.com/user/emails", GithubEmail[].class);
-    final GithubEmail primaryGithubEmail = Arrays.stream(githubEmails).filter(githubEmail -> githubEmail.isPrimary()).findFirst().get();
+    final GithubEmail primaryGithubEmail = Arrays.stream(githubEmails).filter(GithubEmail::isPrimary).findFirst().get();
 
     return primaryGithubEmail.getEmail();
   }
