@@ -1,10 +1,11 @@
 package de.marcweinberger.data.repository;
 
-import de.marcweinberger.CVMakerIntegrationTest;
 import de.marcweinberger.domain.model.User;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Optional;
 
@@ -12,14 +13,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
-/**
- * Test cases for UserRepository.
- *
- * @author Marc Weinberger, marc.weinberger@me.com
- * @since 14.09.15
- */
-@Transactional
-public class UserRepositoryTest extends CVMakerIntegrationTest {
+public class UserRepositoryTest extends MongoRepositoryTestBase {
 
   @Autowired
   private UserRepository userRepository;

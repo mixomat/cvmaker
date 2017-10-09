@@ -11,12 +11,6 @@ import java.util.List;
 
 import static org.springframework.data.mongodb.core.aggregation.Aggregation.*;
 
-/**
- * Mongo Repository for @{Technology} value objects.
- *
- * @author Marc Weinberger, marc.weinberger@me.com
- * @since 31.08.15
- */
 @Repository
 public class TechnologyRepository {
 

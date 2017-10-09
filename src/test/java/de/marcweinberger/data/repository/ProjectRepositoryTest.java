@@ -1,12 +1,10 @@
 package de.marcweinberger.data.repository;
 
-import de.marcweinberger.CVMakerIntegrationTest;
 import de.marcweinberger.domain.model.Project;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -14,14 +12,7 @@ import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasProperty;
 
-/**
- * Test cases for ProjectRepository.
- *
- * @author Marc Weinberger, marc.weinberger@me.com
- * @since 10.07.15
- */
-@Transactional
-public class ProjectRepositoryTest extends CVMakerIntegrationTest {
+public class ProjectRepositoryTest extends MongoRepositoryTestBase {
 
   @Autowired
   private ProjectRepository projectRepository;
