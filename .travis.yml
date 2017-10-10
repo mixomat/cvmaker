@@ -10,7 +10,7 @@ jdk:
 
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
-    docker-compose build
-    docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-    docker push mixomat/cvmaker-api:latest
+    docker-compose build;
+    docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+    docker push mixomat/cvmaker-api:latest;
     fi
