@@ -1,7 +1,10 @@
-FROM java:8-jre
+FROM openjdk:8-jdk-alpine
 
-VOLUME /tmp
-ADD target/cvmaker-0.0.1-SNAPSHOT.jar cvmaker.jar
+RUN mkdir /app
+WORKDIR '/app'
 
-RUN bash -c 'touch /cvmaker.jar'
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","cvmaker.jar"]
+COPY  target/cvmaker-*-SNAPSHOT.jar /app/cvmaker.jar
+
+WORKDIR "/app"
+ENTRYPOINT ["/usr/bin/java"]
+CMD ["-jar", "cvmaker.jar"]

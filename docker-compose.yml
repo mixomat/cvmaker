@@ -1,17 +1,22 @@
-app:
-  build: .
-  environment:
-    - SPRING_DATA_MONGODB_HOST=mongo
-  ports:
-    - "8888:8080"
-  links:
-    - mongo
-  volumes_from:
-    - mongo
-mongo:
-  image: mongo:3.2
-  ports:
-    - "27017:27017"
-  volumes:
-      -  ~/projects/docker/data/mongo/db:/data/db
-      -  ~/projects/docker/data/mongo/configdb:/data/configdb
+version: '2.1'
+
+services:
+  api:
+    build: .
+    image: mixomat/cvmaker-api:latest
+    environment:
+      - SPRING_DATA_MONGODB_HOST=mongo
+    ports:
+      - "8888:8080"
+    links:
+      - mongo
+  mongo:
+    image: mongo:3.2
+    ports:
+      - "27017:27017"
+    volumes:
+        -  mongo-data:/data/db
+        -  mongo-data:/data/configdb
+
+volumes:
+  mongo-data:
