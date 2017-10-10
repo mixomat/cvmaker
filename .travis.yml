@@ -4,10 +4,13 @@ services:
   - docker
 
 language: java
+
 jdk:
   - openjdk8
 
-after_script:
-  - docker-compose build
-  - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-  - docker push mixomat/cvmaker-api:latest
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+    docker-compose build
+    docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+    docker push mixomat/cvmaker-api:latest
+    fi
