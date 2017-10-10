@@ -3,12 +3,6 @@ package de.marcweinberger.domain.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-/**
- * TODO document me
- *
- * @author Marc Weinberger, marc.weinberger@me.com
- * @since 14.09.15
- */
 @Document
 public class User {
 

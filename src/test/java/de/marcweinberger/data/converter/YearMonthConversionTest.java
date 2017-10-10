@@ -1,13 +1,12 @@
 package de.marcweinberger.data.converter;
 
-import com.mongodb.BasicDBObject;
-import com.mongodb.DBObject;
 import de.marcweinberger.domain.model.Project;
+import org.bson.Document;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.context.ApplicationContext;
 import org.springframework.data.mongodb.core.convert.CustomConversions;
 import org.springframework.data.mongodb.core.convert.DbRefResolver;
@@ -54,32 +53,32 @@ public class YearMonthConversionTest {
   @Test
   public void testProjectWriteConversion() throws Exception {
     // given
-    DBObject dbo = new BasicDBObject();
+    Document doc = new Document();
     final LocalDateTime now = LocalDateTime.now();
 
     Project project = getProject(now);
 
 
     // when
-    converter.write(project, dbo);
+    converter.write(project, doc);
 
     // then
-    assertThat(dbo.get("title"), is("test title"));
-    assertThat(dbo.get("start").toString(), containsString("Mon Feb 01"));
-    assertThat(dbo.get("createdAt"), is(Date.from(now.atZone(ZoneId.systemDefault()).toInstant())));
+    assertThat(doc.get("title"), is("test title"));
+    assertThat(doc.get("start").toString(), containsString("Mon Feb 01"));
+    assertThat(doc.get("createdAt"), is(Date.from(now.atZone(ZoneId.systemDefault()).toInstant())));
   }
 
   @Test
   public void testProjectReadConversion() throws Exception {
     // given
-    DBObject dbo = new BasicDBObject();
+    Document doc = new Document();
     final LocalDateTime now = LocalDateTime.now();
 
-    converter.write(getProject(now), dbo);
+    converter.write(getProject(now), doc);
 
 
     // when
-    final Project project = converter.read(Project.class, dbo);
+    final Project project = converter.read(Project.class, doc);
 
     // then
     assertThat(project.getTitle(), is("test title"));

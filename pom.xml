@@ -5,7 +5,7 @@
 
   <groupId>de.marcweinberger</groupId>
   <artifactId>cvmaker</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>cvmaker</name>
@@ -14,9 +14,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>1.3.1.RELEASE</version>
-    <relativePath/>
-    <!-- lookup parent from repository -->
+    <version>2.0.0.M4</version>
   </parent>
 
   <properties>
@@ -63,7 +61,7 @@
     <dependency>
       <groupId>de.flapdoodle.embed</groupId>
       <artifactId>de.flapdoodle.embed.mongo</artifactId>
-      <version>1.50.1</version>
+      <version>2.0.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -144,17 +142,9 @@
 
   <repositories>
     <repository>
-      <id>spring-snapshots</id>
-      <name>Spring Snapshots</name>
-      <url>https://repo.spring.io/snapshot</url>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </repository>
-    <repository>
       <id>spring-milestones</id>
       <name>Spring Milestones</name>
-      <url>https://repo.spring.io/milestone</url>
+      <url>https://repo.spring.io/libs-milestone</url>
       <snapshots>
         <enabled>false</enabled>
       </snapshots>
@@ -162,17 +152,9 @@
   </repositories>
   <pluginRepositories>
     <pluginRepository>
-      <id>spring-snapshots</id>
-      <name>Spring Snapshots</name>
-      <url>https://repo.spring.io/snapshot</url>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </pluginRepository>
-    <pluginRepository>
       <id>spring-milestones</id>
       <name>Spring Milestones</name>
-      <url>https://repo.spring.io/milestone</url>
+      <url>https://repo.spring.io/libs-milestone</url>
       <snapshots>
         <enabled>false</enabled>
       </snapshots>

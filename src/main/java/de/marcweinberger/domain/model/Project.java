@@ -41,6 +41,10 @@ public class Project {
   public Project() {
   }
 
+  public Project(String title) {
+    this.title = title;
+  }
+
 
   public LocalDateTime getCreatedAt() {
     return createdAt;
@@ -136,5 +140,22 @@ public class Project {
 
   public void setHourlyRate(Integer hourlyRate) {
     this.hourlyRate = hourlyRate;
+  }
+
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  public static class Builder {
+    private String title;
+
+    public Builder withTitle(String title) {
+      this.title = title;
+      return this;
+    }
+
+    public Project build() {
+      return new Project(title);
+    }
   }
 }

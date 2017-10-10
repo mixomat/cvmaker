@@ -1,11 +1,11 @@
 package de.marcweinberger.data.repository;
 
-import de.marcweinberger.CVMakerIntegrationTest;
 import de.marcweinberger.domain.model.Project;
 import de.marcweinberger.domain.model.Technology;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.boot.test.context.TestConfiguration;
+import org.springframework.context.annotation.ComponentScan;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -14,14 +14,13 @@ import java.util.List;
 import static org.hamcrest.CoreMatchers.hasItems;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-/**
- * Integration test for {@code TechnologyRepository}.
- *
- * @author Marc Weinberger, marc.weinberger@me.com
- * @since 31.08.15
- */
-@Transactional
-public class TechnologyRepositoryTest extends CVMakerIntegrationTest {
+
+public class TechnologyRepositoryTest extends MongoRepositoryTestBase {
+
+  @TestConfiguration
+  @ComponentScan(basePackageClasses = TechnologyRepository.class)
+  public static class TechnologyRepositoryTestConfiguration {
+  }
 
   @Autowired
   private TechnologyRepository technologyRepository;

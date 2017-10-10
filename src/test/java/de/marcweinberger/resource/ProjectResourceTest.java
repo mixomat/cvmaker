@@ -1,51 +1,54 @@
 package de.marcweinberger.resource;
 
-import de.marcweinberger.CVMakerIntegrationTest;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import de.marcweinberger.CVMakerApp;
 import de.marcweinberger.data.repository.ProjectRepository;
 import de.marcweinberger.domain.model.Project;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.test.TestRestTemplate;
-import org.springframework.hateoas.Resources;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.Matchers.hasSize;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-/**
- * Integration Test for Project resource.
- *
- * @author Marc Weinberger, marc.weinberger@me.com
- * @since 17.08.15
- */
-public class ProjectResourceTest extends CVMakerIntegrationTest {
+@RunWith(SpringRunner.class)
+@AutoConfigureMockMvc
+@SpringBootTest(classes = CVMakerApp.class)
+public class ProjectResourceTest {
 
-  private RestTemplate template = new TestRestTemplate();
+  @Autowired
+  private MockMvc mvc;
+
+  @Autowired
+  private ObjectMapper objectMapper;
 
   @Autowired
   private ProjectRepository projectRepository;
 
-  @Value("${local.server.port}")
-  private int port;
-
   @Test
-  public void getProjectList() throws Exception {
-    // given
+  public void getProjectsReturnsTheListOfProjects() throws Exception {
+    projectRepository.save(new Project());
     projectRepository.save(new Project());
 
-    // when
-    final ResponseEntity<Resources> response = template.getForEntity(getProjectsURL(), Resources.class);
-
-    // then
-    assertThat(response.getStatusCode(), is(HttpStatus.NOT_FOUND));
+    mvc.perform(get("/projects"))
+      .andExpect(status().isOk())
+      .andExpect(jsonPath("$._embedded.projects", hasSize(2)));
   }
 
-  private String getProjectsURL() {
-    return "http://localhost:" + port + "/api/projects";
+  @Test
+  public void createProjectIsSound() throws Exception {
+    Project project = Project.builder().withTitle("some title").build();
+
+    mvc.perform(post("/projects").content(objectMapper.writeValueAsBytes(project)))
+      .andDo(print())
+      .andExpect(status().isCreated());
   }
-
-
 }
