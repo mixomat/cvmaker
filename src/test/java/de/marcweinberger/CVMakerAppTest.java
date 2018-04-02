@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.convert.CustomConversions;
-import org.springframework.security.oauth2.client.OAuth2RestTemplate;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -16,6 +16,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@ActiveProfiles("test")
 public class CVMakerAppTest {
 
   @Autowired
@@ -23,9 +24,6 @@ public class CVMakerAppTest {
 
   @Autowired
   private CustomConversions customerConversion;
-
-  @Autowired
-  private OAuth2RestTemplate gitHubRestTemplate;
 
   @Value("${security.user.name}")
   private String username;
@@ -51,10 +49,5 @@ public class CVMakerAppTest {
   @Test
   public void customConversions() throws Exception {
     assertThat(customerConversion, is(notNullValue()));
-  }
-
-  @Test
-  public void gitHubRestTemplate() throws Exception {
-    assertThat(gitHubRestTemplate, is(notNullValue()));
   }
 }
