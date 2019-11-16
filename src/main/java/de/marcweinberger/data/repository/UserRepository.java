@@ -2,7 +2,7 @@ package de.marcweinberger.data.repository;
 
 import de.marcweinberger.domain.model.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
@@ -12,7 +12,7 @@ import java.util.Optional;
  * @author Marc Weinberger, marc.weinberger@me.com
  * @since 14.09.15
  */
-@RepositoryRestResource
+@Repository
 public interface UserRepository extends MongoRepository<User, Long> {
   Optional<User> findByEmail(String email);
 }
