@@ -27,10 +27,6 @@
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-data-rest</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-devtools</artifactId>
       <optional>true</optional>
     </dependency>
@@ -48,7 +44,7 @@
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-oauth2-client</artifactId>
+      <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
     </dependency>
 
     <!-- MISC -->
@@ -87,45 +83,6 @@
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>com.github.eirslett</groupId>
-        <artifactId>frontend-maven-plugin</artifactId>
-        <version>0.0.26</version>
-        <configuration>
-          <installDirectory>target</installDirectory>
-          <nodeVersion>v4.1.0</nodeVersion>
-          <npmVersion>2.14.4</npmVersion>
-        </configuration>
-        <executions>
-          <execution>
-            <id>install node and npm</id>
-            <goals>
-              <goal>install-node-and-npm</goal>
-            </goals>
-          </execution>
-          <execution>
-            <id>run npm install</id>
-            <goals>
-              <goal>npm</goal>
-            </goals>
-          </execution>
-          <execution>
-            <id>bower install</id>
-            <goals>
-              <goal>bower</goal>
-            </goals>
-          </execution>
-          <execution>
-            <id>gulp build</id>
-            <goals>
-              <goal>gulp</goal>
-            </goals>
-            <configuration>
-              <arguments>build</arguments>
-            </configuration>
-          </execution>
-        </executions>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>

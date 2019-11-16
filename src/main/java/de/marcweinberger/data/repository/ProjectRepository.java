@@ -2,7 +2,7 @@ package de.marcweinberger.data.repository;
 
 import de.marcweinberger.domain.model.Project;
 import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.stereotype.Repository;
 
 /**
  * Repository for project documents.
@@ -10,6 +10,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
  * @author Marc Weinberger, marc.weinberger@me.com
  * @since 10.07.15
  */
-@RepositoryRestResource
+@Repository
 public interface ProjectRepository extends MongoRepository<Project, String> {
 }
