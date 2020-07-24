@@ -1,5 +1,5 @@
 # CVmaker
-[![Build Status](https://travis-ci.org/mixomat/cvmaker.svg?branch=master)](https://travis-ci.org/marcopotento/cvmaker)
+[![Build Status](https://travis-ci.org/mixomat/cvmaker.svg?branch=master)](https://travis-ci.org/mixomat/cvmaker)
 
 Management App for CV, skills... Let's you build your CV and export it into different formats.
 
