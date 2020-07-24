@@ -5,6 +5,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.configurers.oauth2.server.resource.OAuth2ResourceServerConfigurer;
 
+import static org.springframework.security.config.Customizer.withDefaults;
+
 @EnableWebSecurity
 public class OAuth2LoginSecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -14,6 +16,7 @@ public class OAuth2LoginSecurityConfig extends WebSecurityConfigurerAdapter {
       .authorizeRequests()
       .anyRequest().authenticated()
       .and()
-      .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt);
+      .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
+      .cors(withDefaults());
   }
 }

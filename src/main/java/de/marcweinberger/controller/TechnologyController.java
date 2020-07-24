@@ -3,6 +3,7 @@ package de.marcweinberger.controller;
 import de.marcweinberger.data.repository.TechnologyRepository;
 import de.marcweinberger.domain.model.Technology;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +17,7 @@ import java.util.List;
  * @since 31.08.15
  */
 @RestController
+@CrossOrigin
 @RequestMapping("/api/technologies")
 public class TechnologyController {
 
